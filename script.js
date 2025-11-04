@@ -1,49 +1,72 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+async function loadData() {
+  const response = await fetch('data.json');
+  const data = await response.json();
+  return data;
 }
 
-.container {
-  width: 80%;
-  margin: 40px auto;
-  text-align: center;
+async function search() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = '';
+
+  const data = await loadData();
+  const { seslendirmeler, filmler } = data;
+
+  // --- Seslendirme sanatçısı araması ---
+  const sanatciSonuclar = seslendirmeler.filter(s =>
+    s.isim.toLowerCase().includes(query)
+  );
+
+  // --- Film araması ---
+  const filmSonuclar = filmler.filter(f =>
+    f.isim.toLowerCase().includes(query)
+  );
+
+  if (sanatciSonuclar.length === 0 && filmSonuclar.length === 0) {
+    resultsDiv.innerHTML = '<p>Sonuç bulunamadı.</p>';
+    return;
+  }
+
+  // --- Sanatçı sonuçlarını göster ---
+  sanatciSonuclar.forEach(s => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <img src="${s.gorsel}" alt="${s.isim}">
+      <h2>${s.isim}</h2>
+      <p>${s.biyografi}</p>
+      <h3>Projeleri:</h3>
+      <ul class="character">
+        ${s.projeler
+          .map(
+            p =>
+              `<li><strong>${p.film}</strong> — ${p.karakter} (Orijinal ses: ${p.orijinalSes})</li>`
+          )
+          .join('')}
+      </ul>
+    `;
+    resultsDiv.appendChild(card);
+  });
+
+  // --- Film sonuçlarını göster ---
+  filmSonuclar.forEach(f => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <img src="${f.afis}" alt="${f.isim}">
+      <h2>${f.isim}</h2>
+      <h3>Karakterler:</h3>
+      <ul class="character">
+        ${f.karakterler
+          .map(
+            k =>
+              `<li><strong>${k.ad}</strong> — Orijinal: ${k.orijinalSes}, Türkçe: ${k.turkceSes}</li>`
+          )
+          .join('')}
+      </ul>
+    `;
+    resultsDiv.appendChild(card);
+  });
 }
 
-#searchInput {
-  width: 60%;
-  padding: 12px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-}
-
-.card {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 15px auto;
-  max-width: 700px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.card h2 {
-  margin-top: 10px;
-}
-
-.character {
-  margin-top: 10px;
-}
-
-.character li {
-  margin-bottom: 5px;
-}
+document.getElementById('searchInput').addEventListener('input', search);

@@ -1,22 +1,67 @@
-[
-  {
-    "isim": "Sezai Aydın",
-    "gorsel": "https://upload.wikimedia.org/wikipedia/tr/9/9b/Sezai_Aydin.jpg",
-    "biyografi": "Türk seslendirme sanatçısı ve tiyatro oyuncusudur. Bruce Willis ve Sylvester Stallone'un Türkçe sesi olarak tanınmıştır.",
-    "projeler": [
-      "Die Hard (John McClane - Bruce Willis)",
-      "Rambo (Sylvester Stallone)",
-      "The Expendables"
-    ]
-  },
-  {
-    "isim": "Yekta Kopan",
-    "gorsel": "https://upload.wikimedia.org/wikipedia/tr/3/33/Yekta_Kopan.jpg",
-    "biyografi": "Seslendirme sanatçısı, yazar ve televizyon sunucusudur.",
-    "projeler": [
-      "Sid(Buz Devri)",
-      "Kung Fu Panda (Po)",
-      "Garfield (Garfield)"
-    ]
-  }
-]
+{
+  "seslendirmeler": [
+    {
+      "isim": "Sezai Aydın",
+      "gorsel": "https://upload.wikimedia.org/wikipedia/tr/9/9b/Sezai_Aydin.jpg",
+      "biyografi": "Türk tiyatro ve seslendirme sanatçısıdır. Bruce Willis ve Sylvester Stallone'un Türkçe sesi olarak tanınmıştır.",
+      "projeler": [
+        {
+          "film": "Die Hard",
+          "karakter": "John McClane",
+          "orijinalSes": "Bruce Willis"
+        },
+        {
+          "film": "Rambo",
+          "karakter": "John Rambo",
+          "orijinalSes": "Sylvester Stallone"
+        }
+      ]
+    },
+    {
+      "isim": "Yekta Kopan",
+      "gorsel": "https://upload.wikimedia.org/wikipedia/tr/3/33/Yekta_Kopan.jpg",
+      "biyografi": "Seslendirme sanatçısı, yazar ve sunucudur. Animasyon karakterlerini Türkçede seslendirmesiyle tanınır.",
+      "projeler": [
+        {
+          "film": "Ters Yüz",
+          "karakter": "Joy",
+          "orijinalSes": "Amy Poehler"
+        },
+        {
+          "film": "Kung Fu Panda",
+          "karakter": "Po",
+          "orijinalSes": "Jack Black"
+        }
+      ]
+    }
+  ],
+  "filmler": [
+    {
+      "isim": "Ters Yüz",
+      "afis": "https://upload.wikimedia.org/wikipedia/tr/8/88/Inside_Out_poster.jpg",
+      "karakterler": [
+        {
+          "ad": "Joy",
+          "orijinalSes": "Amy Poehler",
+          "turkceSes": "Yekta Kopan"
+        },
+        {
+          "ad": "Sadness",
+          "orijinalSes": "Phyllis Smith",
+          "turkceSes": "Funda Eryiğit"
+        }
+      ]
+    },
+    {
+      "isim": "Die Hard",
+      "afis": "https://upload.wikimedia.org/wikipedia/en/7/7e/Die_hard.jpg",
+      "karakterler": [
+        {
+          "ad": "John McClane",
+          "orijinalSes": "Bruce Willis",
+          "turkceSes": "Sezai Aydın"
+        }
+      ]
+    }
+  ]
+}

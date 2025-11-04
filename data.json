@@ -1,0 +1,22 @@
+[
+  {
+    "isim": "Sezai Aydın",
+    "gorsel": "https://upload.wikimedia.org/wikipedia/tr/9/9b/Sezai_Aydin.jpg",
+    "biyografi": "Türk seslendirme sanatçısı ve tiyatro oyuncusudur. Bruce Willis ve Sylvester Stallone'un Türkçe sesi olarak tanınmıştır.",
+    "projeler": [
+      "Die Hard (John McClane - Bruce Willis)",
+      "Rambo (Sylvester Stallone)",
+      "The Expendables"
+    ]
+  },
+  {
+    "isim": "Yekta Kopan",
+    "gorsel": "https://upload.wikimedia.org/wikipedia/tr/3/33/Yekta_Kopan.jpg",
+    "biyografi": "Seslendirme sanatçısı, yazar ve televizyon sunucusudur.",
+    "projeler": [
+      "Bay Max (Hiro’nun babası)",
+      "Kung Fu Panda (Po)",
+      "Garfield (Garfield)"
+    ]
+  }
+]

@@ -1,37 +1,49 @@
-async function loadData() {
-  const response = await fetch('data.json');
-  const data = await response.json();
-  return data;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 
-async function searchArtist() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  const resultsDiv = document.getElementById('results');
-  resultsDiv.innerHTML = '';
-
-  const data = await loadData();
-  const filtered = data.filter(item => item.isim.toLowerCase().includes(query));
-
-  if (filtered.length === 0) {
-    resultsDiv.innerHTML = '<p>Sonuç bulunamadı.</p>';
-    return;
-  }
-
-  filtered.forEach(artist => {
-    const card = document.createElement('div');
-    card.classList.add('artist-card');
-
-    card.innerHTML = `
-      <img src="${artist.gorsel}" alt="${artist.isim}">
-      <h2>${artist.isim}</h2>
-      <p>${artist.biyografi}</p>
-      <h3>Projeler:</h3>
-      <ul class="projects">
-        ${artist.projeler.map(p => `<li>${p}</li>`).join('')}
-      </ul>
-    `;
-    resultsDiv.appendChild(card);
-  });
+.container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
 }
 
-document.getElementById('searchInput').addEventListener('input', searchArtist);
+#searchInput {
+  width: 60%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 700px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin-top: 10px;
+}
+
+.character {
+  margin-top: 10px;
+}
+
+.character li {
+  margin-bottom: 5px;
+}

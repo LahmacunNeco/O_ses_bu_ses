@@ -2,7 +2,7 @@
   {
     "id": 1,
     "sanatciIsmi": "Harun Can",
-    "sanatciFoto": "images/haruncan.jpg",
+    "sanatciFoto": "images/harunCan.jpg",
     "filmIsmi": "Deadpool",
     "karakter": "Wade Wilson / Deadpool",
     "tur": "Film"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "sanatciIsmi": "Harun Can",
-    "sanatciFoto": "images/haruncan.jpg",
+    "sanatciFoto": "images/harunCan.jpg",
     "filmIsmi": "Örümcek Adam: Eve Dönüş",
     "karakter": "Peter Parker",
     "tur": "Film"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "sanatciIsmi": "Sungun Babacan",
-    "sanatciFoto": "images/sungunbabacan.jpg",
+    "sanatciFoto": "images/sungunBabacan.jpeg",
     "filmIsmi": "Forrest Gump",
     "karakter": "Forrest Gump",
     "tur": "Film"
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "sanatciIsmi": "Sezai Aydın",
-    "sanatciFoto": "https://via.placeholder.com/150", 
+    "sanatciFoto": "images/sezaiAydın.jpg", 
     "filmIsmi": "Rocky",
     "karakter": "Rocky Balboa",
     "tur": "Film"

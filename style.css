@@ -1,57 +1,132 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+/* Temel Ayarlar */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
 }
 
 .container {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-h1 {
-    text-align: center;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 18px;
-    background: #2f7aff;
+/* Header */
+header {
+    background-color: #2c3e50;
     color: white;
-    border: none;
-    border-radius: 8px;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Arama Kutusu */
+.search-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+}
+
+.search-options {
+    margin-top: 15px;
+    color: #666;
+}
+
+.search-options label {
+    margin: 0 10px;
     cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.9;
-}
-
-#results {
-    margin-top: 20px;
+/* Sonuç Kartları (Grid Yapısı) */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .card {
-    background: #fafafa;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: 4px solid #2f7aff;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-.poster {
-    width: 120px;
-    border-radius: 6px;
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.role-list {
+    list-style: none;
+}
+
+.role-item {
+    background-color: #f8f9fa;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.role-movie {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.role-char {
+    color: #555;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .card-img-top { height: 200px; }
 }

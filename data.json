@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Sungun Babacan",
+    "photo": "https://via.placeholder.com/150", 
+    "works": [
+      { "movie": "Forrest Gump", "character": "Forrest Gump" },
+      { "movie": "Top Gun", "character": "Maverick" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sezai Aydın",
+    "photo": "https://via.placeholder.com/150",
+    "works": [
+      { "movie": "Rocky", "character": "Rocky Balboa" },
+      { "movie": "Shrek", "character": "Eşek" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Yekta Kopan",
+    "photo": "https://via.placeholder.com/150",
+    "works": [
+      { "movie": "Buz Devri", "character": "Sid" },
+      { "movie": "Geleceğe Dönüş", "character": "Marty McFly" }
+    ]
+  }
+]

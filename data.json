@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Sungun Babacan",
-    "photo": "https://via.placeholder.com/150", 
+    "photo": "/images/sungunBabacan.jpeg", 
     "works": [
       { "movie": "Forrest Gump", "character": "Forrest Gump" },
       { "movie": "Top Gun", "character": "Maverick" }

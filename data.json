@@ -1,29 +1,34 @@
 [
   {
     "id": 1,
-    "name": "Sungun Babacan",
-    "photo": "/images/sungunBabacan.jpeg", 
-    "works": [
-      { "movie": "Forrest Gump", "character": "Forrest Gump" },
-      { "movie": "Top Gun", "character": "Maverick" }
-    ]
+    "sanatciIsmi": "Harun Can",
+    "sanatciFoto": "images/haruncan.jpg",
+    "filmIsmi": "Deadpool",
+    "karakter": "Wade Wilson / Deadpool",
+    "tur": "Film"
   },
   {
     "id": 2,
-    "name": "Sezai Aydın",
-    "photo": "https://via.placeholder.com/150",
-    "works": [
-      { "movie": "Rocky", "character": "Rocky Balboa" },
-      { "movie": "Shrek", "character": "Eşek" }
-    ]
+    "sanatciIsmi": "Harun Can",
+    "sanatciFoto": "images/haruncan.jpg",
+    "filmIsmi": "Örümcek Adam: Eve Dönüş",
+    "karakter": "Peter Parker",
+    "tur": "Film"
   },
   {
     "id": 3,
-    "name": "Yekta Kopan",
-    "photo": "https://via.placeholder.com/150",
-    "works": [
-      { "movie": "Buz Devri", "character": "Sid" },
-      { "movie": "Geleceğe Dönüş", "character": "Marty McFly" }
-    ]
+    "sanatciIsmi": "Sungun Babacan",
+    "sanatciFoto": "images/sungunbabacan.jpg",
+    "filmIsmi": "Forrest Gump",
+    "karakter": "Forrest Gump",
+    "tur": "Film"
+  },
+  {
+    "id": 4,
+    "sanatciIsmi": "Sezai Aydın",
+    "sanatciFoto": "https://via.placeholder.com/150", 
+    "filmIsmi": "Rocky",
+    "karakter": "Rocky Balboa",
+    "tur": "Film"
   }
 ]

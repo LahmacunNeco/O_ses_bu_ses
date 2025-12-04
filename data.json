@@ -26,7 +26,7 @@
   {
     "id": 4,
     "sanatciIsmi": "Sezai Aydın",
-    "sanatciFoto": "/images/sezaiAydın.jpg", 
+    "sanatciFoto": "images/sezaiAydın.jpg", 
     "filmIsmi": "Rocky",
     "karakter": "Rocky Balboa",
     "tur": "Film"

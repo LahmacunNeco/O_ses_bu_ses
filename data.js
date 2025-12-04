@@ -1,44 +1,139 @@
-const database = {
-    // FİLMLER LİSTESİ
-    movies: [
-        {
-            id: 1,
-            title: "Ters Yüz",
-            year: 2015,
-            poster: "https://image.tmdb.org/t/p/w500/lRHE0vzf3DfYDk6FBkZjirJNQ9g.jpg", // Örnek poster linki
-            cast: [
-                { character: "Neşe", original: "Amy Poehler", tr_actor_id: 101 },
-                { character: "Üzüntü", original: "Phyllis Smith", tr_actor_id: 102 },
-                { character: "Bing Bong", original: "Richard Kind", tr_actor_id: 103 }
-            ]
-        },
-        {
-            id: 2,
-            title: "Ters Yüz 2",
-            year: 2024,
-            poster: "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
-            cast: [
-                { character: "Neşe", original: "Amy Poehler", tr_actor_id: 101 },
-                { character: "Kaygı", original: "Maya Hawke", tr_actor_id: 104 }
-            ]
-        },
-        {
-            id: 3,
-            title: "Deadpool",
-            year: 2016,
-            poster: "https://image.tmdb.org/t/p/w500/fSRb7vyIP8rQpL0I47P3qUsEKX3.jpg",
-            cast: [
-                { character: "Wade Wilson", original: "Ryan Reynolds", tr_actor_id: 105 }
-            ]
-        }
-    ],
+// 🔍 Arama Kutusu Fonksiyonu
+function performSearch() {
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+    const resultsArea = document.getElementById("resultsArea");
 
-    // SESLENDİRME SANATÇILARI LİSTESİ
-    voiceActors: [
-        { id: 101, name: "Aysun Topar", img: "https://via.placeholder.com/150" },
-        { id: 102, name: "Gupse Özay", img: "https://via.placeholder.com/150" },
-        { id: 103, name: "Engin Alkan", img: "https://via.placeholder.com/150" },
-        { id: 104, name: "Aslı İnandık", img: "https://via.placeholder.com/150" },
-        { id: 105, name: "Harun Can", img: "https://via.placeholder.com/150" }
-    ]
-};
+    if (!query) {
+        resultsArea.innerHTML = "<p>Lütfen arama yapın.</p>";
+        return;
+    }
+
+    resultsArea.innerHTML = "";
+
+    // Film arama
+    const movieResults = database.movies.filter(m =>
+        m.title.toLowerCase().includes(query)
+    );
+
+    // Seslendirme sanatçısı arama
+    const actorResults = database.voiceActors.filter(a =>
+        a.name.toLowerCase().includes(query)
+    );
+
+    // Eğer sonuç yoksa
+    if (movieResults.length === 0 && actorResults.length === 0) {
+        resultsArea.innerHTML = "<p>Sonuç bulunamadı.</p>";
+        return;
+    }
+
+    // 🎬 Filmleri listele
+    movieResults.forEach(movie => {
+        const item = document.createElement("div");
+        item.className = "grid-item";
+        item.onclick = () => showMovieDetail(movie.id);
+
+        item.innerHTML = `
+            <img src="${movie.poster}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+            <p>${movie.year}</p>
+        `;
+
+        resultsArea.appendChild(item);
+    });
+
+    // 🎤 Seslendirme sanatçılarını listele
+    actorResults.forEach(actor => {
+        const item = document.createElement("div");
+        item.className = "grid-item";
+        item.onclick = () => showActorDetail(actor.id);
+
+        item.innerHTML = `
+            <img src="${actor.img}" alt="${actor.name}">
+            <h3>${actor.name}</h3>
+            <p>Seslendirme Sanatçısı</p>
+        `;
+
+        resultsArea.appendChild(item);
+    });
+}
+
+// 🎬 Film Detay Sayfası
+function showMovieDetail(movieId) {
+    const movie = database.movies.find(m => m.id === movieId);
+
+    document.getElementById("resultsArea").classList.add("hidden");
+    document.getElementById("actorDetailArea").classList.add("hidden");
+
+    const area = document.getElementById("movieDetailArea");
+    area.classList.remove("hidden");
+
+    document.getElementById("movieInfo").innerHTML = `
+        <img src="${movie.poster}">
+        <div>
+            <h2>${movie.title}</h2>
+            <p>${movie.year}</p>
+        </div>
+    `;
+
+    const castList = document.getElementById("castList");
+    castList.innerHTML = "";
+
+    movie.cast.forEach(c => {
+        const trVoice = database.voiceActors.find(v => v.id === c.tr_actor_id);
+
+        castList.innerHTML += `
+            <div class="cast-row">
+                <span>${c.original}</span>
+                <span>${c.character}</span>
+                <span class="tr-voice" onclick="showActorDetail(${trVoice.id})">
+                    ${trVoice.name}
+                </span>
+            </div>
+        `;
+    });
+}
+
+// 🎤 Seslendirme Sanatçısı Detay Sayfası
+function showActorDetail(actorId) {
+    const actor = database.voiceActors.find(a => a.id === actorId);
+
+    document.getElementById("resultsArea").classList.add("hidden");
+    document.getElementById("movieDetailArea").classList.add("hidden");
+
+    const area = document.getElementById("actorDetailArea");
+    area.classList.remove("hidden");
+
+    document.getElementById("actorInfo").innerHTML = `
+        <img src="${actor.img}">
+        <h2>${actor.name}</h2>
+    `;
+
+    const credits = document.getElementById("actorCredits");
+    credits.innerHTML = "";
+
+    // Bu sanatçının seslendirdiği filmleri bul
+    const films = database.movies.filter(movie =>
+        movie.cast.some(c => c.tr_actor_id === actorId)
+    );
+
+    films.forEach(movie => {
+        const item = document.createElement("div");
+        item.className = "grid-item";
+        item.onclick = () => showMovieDetail(movie.id);
+
+        item.innerHTML = `
+            <img src="${movie.poster}">
+            <h3>${movie.title}</h3>
+        `;
+
+        credits.appendChild(item);
+    });
+}
+
+// 🔙 Geri Dön
+function goBack() {
+    document.getElementById("movieDetailArea").classList.add("hidden");
+    document.getElementById("actorDetailArea").classList.add("hidden");
+
+    document.getElementById("resultsArea").classList.remove("hidden");
+}

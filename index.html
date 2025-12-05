@@ -3,48 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seslendirme Veritabanı</title>
+    <title>Dublaj Veritabanı</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-microphone-alt"></i> Seslendirme Rehberi</h1>
-            <p>Filmleri, dizileri veya seslendirme sanatçılarını arayın.</p>
-            
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Örn: Ters Yüz, Harun Can, Brad Pitt...">
-                <button onclick="performSearch()">Ara</button>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-film"></i> Seslendirme Kadroları</h1>
+            <p>Dublaj veritabanında arama yapın</p>
+        </header>
+
+        <div class="search-type-selector">
+            <label>
+                <input type="radio" name="searchType" value="movie" checked>
+                <span><i class="fas fa-video"></i> Film Ara</span>
+            </label>
+            <label>
+                <input type="radio" name="searchType" value="artist">
+                <span><i class="fas fa-microphone"></i> Sanatçı Ara</span>
+            </label>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Film adı girin...">
+            <button onclick="searchDatabase()">ARA</button>
+        </div>
+
+        <div id="results" class="results-area">
             </div>
+        
+        <div id="no-result" class="hidden">
+            <p>Kriterlere uygun kayıt bulunamadı.</p>
         </div>
-    </header>
+    </div>
 
-    <main class="container">
-        <div id="resultsArea" class="grid-container"></div>
-
-        <div id="movieDetailArea" class="hidden">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Geri Dön</button>
-            <div id="movieInfo" class="movie-header"></div>
-            
-            <div class="cast-table-header">
-                <span>Orijinal Ses</span>
-                <span>Karakter</span>
-                <span>Türkçe Ses</span>
-            </div>
-            <div id="castList" class="cast-list"></div>
-        </div>
-
-        <div id="actorDetailArea" class="hidden">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Geri Dön</button>
-            <div id="actorInfo" class="actor-profile"></div>
-            <h3>Seslendirdiği Yapımlar</h3>
-            <div id="actorCredits" class="grid-container"></div>
-        </div>
-    </main>
-
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

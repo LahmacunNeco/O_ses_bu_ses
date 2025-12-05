@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dublaj Veritabanı Final</title>
+    <title>Gelişmiş Dublaj Veritabanı</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ... Önceki CSS kodlarının TAMAMI buraya gelecek ... */
-        /* (Yer kazanmak için CSS'i tekrar yazmadım, ama önceki CSS'i buraya kopyala) */
-        :root { /* Önceki CSS'in başlangıcı */
-            --primary: #e50914; 
-            --bg: #141414;      
-            /* ... diğer CSS kodları ... */
-        }
-        /* ... önceki CSS'in sonu ... */
+        /* CSS içeriğini 2. Adımda veriyorum */
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1><i class="fas fa-microphone-lines"></i> Dublaj Bulucu</h1>
-            <p>İster film kadrosunu, ister sanatçının işlerini bulun.</p>
+            <h1><i class="fas fa-magic"></i> Dublaj Diyarı</h1>
+            <p>Anında arama sonuçları ile filmleri ve sanatçıları keşfet.</p>
         </header>
 
         <div class="search-options">
@@ -37,8 +30,8 @@
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Deadpool)...">
-            <button class="search-btn" id="searchButton">ARA</button>
+            <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Deadpool)..." oninput="aramaYap()">
+            <button class="search-btn" id="searchButton" onclick="aramaYap()">ARA</button>
         </div>
 
         <div id="sonucAlani">
@@ -46,6 +39,5 @@
     </div>
 
     <script src="data.js"></script>
-    
 </body>
 </html>

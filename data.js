@@ -7,7 +7,7 @@ const dublajVerileri = [
     { film: "Örümcek Adam", karakter: "Peter Parker", sanatci: "Harun Can", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
     { film: "Örümcek Adam", karakter: "May Hala", sanatci: "Gülen Karaman", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
     
-    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
+    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://www.imdb.com/title/tt0268380/mediaviewer/rm1961260033/?ref_=tt_ov_i" },
     
     { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
     { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },

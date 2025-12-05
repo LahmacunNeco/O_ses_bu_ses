@@ -4,41 +4,360 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dublaj Veritabanı</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS TASARIMI (Görünüm) --- */
+        :root {
+            --primary: #e50914; /* Netflix Kırmızısı */
+            --bg: #141414;      /* Koyu Arkaplan */
+            --surface: #1f1f1f; /* Kart Rengi */
+            --text: #ffffff;
+            --subtext: #b3b3b3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Arama Seçenekleri (Radio Butonlar) */
+        .search-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            background: var(--surface);
+            padding: 10px;
+            border-radius: 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .option-label {
+            cursor: pointer;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        /* Radio inputu gizle, sadece etiketi göster */
+        .option-label input {
+            display: none;
+        }
+
+        /* Seçili olan seçeneğin stili */
+        .option-label:has(input:checked) {
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+
+        .option-label:not(:has(input:checked)) {
+            color: var(--subtext);
+        }
+
+        /* Arama Kutusu */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 2px solid #333;
+            background: #000;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        button.search-btn {
+            padding: 0 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button.search-btn:hover {
+            background-color: #f40612;
+        }
+
+        /* --- SONUÇ ALANI TASARIMI --- */
+        
+        /* 1. FİLM SONUCU TASARIMI (KADRO LİSTESİ) */
+        .movie-result-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .movie-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+            color: var(--primary);
+        }
+
+        .cast-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #2f2f2f;
+        }
+
+        .cast-row:last-child { border-bottom: none; }
+        
+        .role-name { color: #ddd; font-weight: 500; }
+        .artist-name { color: var(--subtext); font-style: italic; }
+
+        /* 2. SANATÇI SONUCU TASARIMI (KARTLAR) */
+        .artist-result-card {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 5px solid #fff;
+        }
+
+        .artist-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .artist-info p {
+            margin: 5px 0 0 0;
+            color: var(--subtext);
+            font-size: 0.9rem;
+        }
+
+        .character-tag {
+            background: #333;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .hidden { display: none; }
+        .error-msg {
+            color: #ff4444;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1><i class="fas fa-film"></i> Seslendirme Kadroları</h1>
-            <p>Dublaj veritabanında arama yapın</p>
+            <h1><i class="fas fa-microphone-lines"></i> Dublaj Bulucu</h1>
+            <p>İster film kadrosunu, ister sanatçının işlerini bulun.</p>
         </header>
 
-        <div class="search-type-selector">
-            <label>
-                <input type="radio" name="searchType" value="movie" checked>
-                <span><i class="fas fa-video"></i> Film Ara</span>
+        <div class="search-options">
+            <label class="option-label">
+                <input type="radio" name="searchType" value="movie" checked onchange="updatePlaceholder()">
+                <i class="fas fa-film"></i> Film Ara
             </label>
-            <label>
-                <input type="radio" name="searchType" value="artist">
-                <span><i class="fas fa-microphone"></i> Sanatçı Ara</span>
+            <label class="option-label">
+                <input type="radio" name="searchType" value="artist" onchange="updatePlaceholder()">
+                <i class="fas fa-user"></i> Sanatçı Ara
             </label>
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Film adı girin...">
-            <button onclick="searchDatabase()">ARA</button>
+            <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Deadpool)...">
+            <button class="search-btn" onclick="aramaYap()">ARA</button>
         </div>
 
-        <div id="results" class="results-area">
+        <div id="sonucAlani">
             </div>
-        
-        <div id="no-result" class="hidden">
-            <p>Kriterlere uygun kayıt bulunamadı.</p>
-        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // --- JAVASCRIPT BÖLÜMÜ (MANTIK) ---
+
+        // 1. VERİTABANI (Buraya istediğin kadar ekle)
+        const dublajVerileri = [
+            { film: "Deadpool", karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can" },
+            { film: "Deadpool", karakter: "Weasel", sanatci: "Barış Özgenç" },
+            { film: "Deadpool", karakter: "Vanessa", sanatci: "Burcu Güneştutar" },
+            { film: "Deadpool", karakter: "Colossus", sanatci: "Ender Yiğit" },
+
+            { film: "Örümcek Adam", karakter: "Peter Parker", sanatci: "Harun Can" },
+            { film: "Örümcek Adam", karakter: "May Hala", sanatci: "Gülen Karaman" },
+            { film: "Örümcek Adam", karakter: "Norman Osborn", sanatci: "Faruk Akgören" },
+
+            { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan" },
+            { film: "Buz Devri", karakter: "Manny", sanatci: "Ali Poyrazoğlu" },
+            { film: "Buz Devri", karakter: "Diego", sanatci: "Haluk Bilginer" },
+
+            { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın" },
+            { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen" },
+            { film: "Shrek", karakter: "Fiona", sanatci: "Oya Prosçiler" },
+
+            { film: "Fight Club", karakter: "Tyler Durden", sanatci: "Umut Tabak" },
+            { film: "Fight Club", karakter: "Anlatıcı", sanatci: "Murat Şen" }
+        ];
+
+        // Placeholder yazısını güncelleme fonksiyonu
+        function updatePlaceholder() {
+            const tip = document.querySelector('input[name="searchType"]:checked').value;
+            const input = document.getElementById('searchInput');
+            if (tip === 'movie') {
+                input.placeholder = "Film adı girin (Örn: Deadpool)...";
+            } else {
+                input.placeholder = "Seslendirmen adı girin (Örn: Harun Can)...";
+            }
+        }
+
+        // 2. ARAMA FONKSİYONU
+        function aramaYap() {
+            const arananKelime = document.getElementById('searchInput').value.trim().toLocaleLowerCase('tr');
+            const aramaTipi = document.querySelector('input[name="searchType"]:checked').value;
+            const sonucKutusu = document.getElementById('sonucAlani');
+
+            // Ekranı temizle
+            sonucKutusu.innerHTML = "";
+
+            if (arananKelime === "") {
+                alert("Lütfen bir şeyler yazın!");
+                return;
+            }
+
+            // --- SENARYO 1: FİLM ARIYORSA ---
+            if (aramaTipi === 'movie') {
+                // 1. Adım: Sadece film adı eşleşenleri bul
+                const bulunanlar = dublajVerileri.filter(kayit => 
+                    kayit.film.toLocaleLowerCase('tr').includes(arananKelime)
+                );
+
+                if (bulunanlar.length === 0) {
+                    sonucKutusu.innerHTML = `<div class="error-msg">Aradığınız film bulunamadı.</div>`;
+                    return;
+                }
+
+                // 2. Adım: Filmleri isme göre grupla (Örn: "Deadpool" ve "Deadpool 2" karışmasın diye)
+                const filmGruplari = {};
+                bulunanlar.forEach(kayit => {
+                    if (!filmGruplari[kayit.film]) {
+                        filmGruplari[kayit.film] = [];
+                    }
+                    filmGruplari[kayit.film].push(kayit);
+                });
+
+                // 3. Adım: Her film için bir "Kadro Kartı" oluştur
+                Object.keys(filmGruplari).forEach(filmAdi => {
+                    const kadro = filmGruplari[filmAdi];
+                    
+                    // Kadro listesini HTML'e dök
+                    let kadroHTML = "";
+                    kadro.forEach(kisi => {
+                        kadroHTML += `
+                            <div class="cast-row">
+                                <span class="role-name">${kisi.karakter}</span>
+                                <span class="artist-name"><i class="fas fa-microphone"></i> ${kisi.sanatci}</span>
+                            </div>
+                        `;
+                    });
+
+                    // Kartı oluştur ve ekle
+                    const kart = document.createElement('div');
+                    kart.className = 'movie-result-card';
+                    kart.innerHTML = `
+                        <div class="movie-header"><i class="fas fa-video"></i> ${filmAdi}</div>
+                        <div>${kadroHTML}</div>
+                    `;
+                    sonucKutusu.appendChild(kart);
+                });
+
+            } 
+            // --- SENARYO 2: SANATÇI ARIYORSA ---
+            else {
+                // 1. Adım: Sanatçı adı eşleşenleri bul
+                const bulunanlar = dublajVerileri.filter(kayit => 
+                    kayit.sanatci.toLocaleLowerCase('tr').includes(arananKelime)
+                );
+
+                if (bulunanlar.length === 0) {
+                    sonucKutusu.innerHTML = `<div class="error-msg">Bu isimde bir seslendirmen bulunamadı.</div>`;
+                    return;
+                }
+
+                // 2. Adım: Her iş için tek tek kart bas
+                bulunanlar.forEach(kayit => {
+                    const kart = document.createElement('div');
+                    kart.className = 'artist-result-card';
+                    kart.innerHTML = `
+                        <div class="artist-info">
+                            <h3>${kayit.sanatci}</h3>
+                            <p>Film: <strong>${kayit.film}</strong></p>
+                        </div>
+                        <div class="character-tag">
+                            ${kayit.karakter}
+                        </div>
+                    `;
+                    sonucKutusu.appendChild(kart);
+                });
+            }
+        }
+
+        // Enter tuşu ile arama yapabilme
+        document.getElementById('searchInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                aramaYap();
+            }
+        });
+
+    </script>
 </body>
 </html>

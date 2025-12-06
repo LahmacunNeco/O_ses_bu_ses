@@ -1,3 +1,5 @@
+/* -- Tarayıcı Önbellek Temizleme Hilesi: Tarayıcıyı Yeni Sürüm Yüklemeye Zorlar -- */
+/* Sürüm Etiketi: v1.1.20251206 */
 :root {
     --primary: #00ADB5; /* Turkuaz Vurgu */
     --primary-light: #EEEEEE; /* Ana Açık Gri (Arkaplan) */
@@ -85,7 +87,7 @@ button.search-btn {
     padding: 15px 25px;
     font-size: 1.6rem;
     font-weight: 600;
-    background-color: #F8F8F8; /* Hafif kontrast */
+    background-color: #F8F8F8;
     color: var(--primary);
     border-bottom: 1px solid #E0E0E0;
 }
@@ -118,7 +120,7 @@ button.search-btn {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px dashed #E0E0E0; /* Daha zarif ayrım */
+    border-bottom: 1px dashed #E0E0E0;
     font-size: 0.95rem;
 }
 .cast-row:last-child { border-bottom: none; }
@@ -150,7 +152,7 @@ button.search-btn {
 .character-tag {
     background: var(--primary);
     padding: 8px 18px;
-    border-radius: 20px; /* Yuvarlak kenarlar */
+    border-radius: 20px;
     font-weight: 600;
     color: white;
     font-size: 0.85rem;

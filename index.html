@@ -7,7 +7,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-       :root {
+       /* Turkuaz Temasına Eklenecek YENİ CSS Kodları */
+
+#filmSecimListesi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.film-secim-karti {
+    width: 150px;
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.film-secim-karti:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 173, 181, 0.3);
+}
+
+.film-secim-karti img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.film-secim-karti h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.geri-btn {
+    background-color: var(--subtext);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.geri-btn:hover {
+    background-color: #555;
+}:root {
     --primary: #00ADB5; /* Turkuaz Vurgu */
     --primary-light: #EEEEEE; /* Ana Açık Gri (Arkaplan) */
     --surface: #FFFFFF; /* Kart Yüzeyi Beyaz */
@@ -15,19 +67,39 @@
     --subtext: #505560;
     --shadow: rgba(0, 0, 0, 0.08);
 }
-body {
-    font-family: 'Poppins', sans-serif; 
-    background-color: var(--primary-light);
-    color: var(--text);
-    margin: 0;
-    padding: 30px 20px;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-.container {
-    width: 100%;
-    max-width: 900px;
+<body>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-magic"></i> Dublaj Diyarı</h1>
+            <p>Anında arama sonuçları ile filmleri ve sanatçıları keşfet.</p>
+        </header>
+
+        <div class="search-options">
+            <label class="option-label">
+                <input type="radio" name="searchType" value="movie" checked>
+                <i class="fas fa-film"></i> Film Ara
+            </label>
+            <label class="option-label">
+                <input type="radio" name="searchType" value="artist">
+                <i class="fas fa-user"></i> Sanatçı Ara
+            </label>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Deadpool)..." oninput="aramaYap()">
+            <button class="search-btn" id="searchButton" onclick="aramaYap()">ARA</button>
+        </div>
+        
+        <div id="sonucAlani">
+            </div>
+
+        <div id="backButtonContainer" style="margin-bottom: 20px;"></div>
+    </div>
+
+    <script src="data.js"></script>
+    
+</body>
 }
 header { text-align: center; margin-bottom: 50px; }
 header h1 { 

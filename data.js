@@ -1,167 +1,261 @@
-// --- 1. VERİ TABANI ---
-const dublajVerileri = [
-    // Lütfen buradaki afiş linklerinin çalıştığından emin olun.
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş Dublaj Veritabanı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    // Deadpool Serisi
-    { film: "Deadpool", bolum: 1, karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
-    { film: "Deadpool", bolum: 1, karakter: "Weasel", sanatci: "Barış Özgenç", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
-    { film: "Deadpool 2", bolum: 2, karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/p3N4W4N/deadpool2-poster.jpg" },
-    { film: "Deadpool 2", bolum: 2, karakter: "Cable", sanatci: "Rıza Karaağaç", afis: "https://i.ibb.co/p3N4W4N/deadpool2-poster.jpg" },
-    
-    // Shrek Serisi
-    { film: "Shrek", bolum: 1, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    { film: "Shrek", bolum: 1, karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    { film: "Shrek 2", bolum: 2, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
-    { film: "Shrek 2", bolum: 2, karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
-    
-    // Diğerleri
-    { film: "Fight Club", bolum: 1, karakter: "Tyler Durden", sanatci: "Umut Tabak", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" },
-    { film: "Buz Devri", bolum: 1, karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
-];
-
-// --- 2. JAVASCRIPT MANTIĞI ---
-
-window.onload = function() {
-    const searchInput = document.getElementById('searchInput');
-    const sonucKutusu = document.getElementById('sonucAlani');
-    const radioInputs = document.querySelectorAll('input[name="searchType"]');
-    const backButtonContainer = document.getElementById('backButtonContainer');
-
-    // Placeholder Güncelleme
-    function updatePlaceholder() {
-        const tip = document.querySelector('input[name="searchType"]:checked').value;
-        if (tip === 'movie') {
-            searchInput.placeholder = "Film/Seri adı girin (Örn: Shrek)...";
-        } else {
-            searchInput.placeholder = "Seslendirmen adı girin (Örn: Harun Can)...";
+    <style>
+        /* Sürüm Etiketi: Final_v2.0_Turkuaz */
+        :root {
+            --primary: #00ADB5; /* Turkuaz Vurgu */
+            --primary-light: #EEEEEE; /* Ana Açık Gri (Arkaplan) */
+            --surface: #FFFFFF; /* Kart Yüzeyi Beyaz */
+            --text: #222831; /* Koyu Gri Metin */
+            --subtext: #505560;
+            --shadow: rgba(0, 0, 0, 0.08);
         }
-        // Arama tipini değiştirince temizle
-        sonucKutusu.innerHTML = '';
-        backButtonContainer.innerHTML = '';
-        // Arama yap (input boşsa bir şey göstermez)
-        aramaYap(); 
-    }
+        body {
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--primary-light);
+            color: var(--text);
+            margin: 0;
+            padding: 30px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+        header { text-align: center; margin-bottom: 50px; }
+        header h1 { 
+            color: var(--primary); 
+            font-size: 3rem; 
+            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+            text-shadow: 1px 1px 3px rgba(0, 173, 181, 0.2);
+        }
+        /* Arama Seçenekleri */
+        .search-options {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;
+        }
+        .option-label {
+            cursor: pointer; padding: 10px 20px; border-radius: 25px; transition: 0.3s;
+            background: var(--surface);
+            border: 1px solid var(--primary-light);
+            box-shadow: 0 2px 5px var(--shadow);
+        }
+        .option-label input { display: none; }
+        .option-label:has(input:checked) { 
+            background-color: var(--primary); 
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 173, 181, 0.4);
+            font-weight: 600;
+        }
+        .option-label:not(:has(input:checked)) { color: var(--subtext); }
 
-    // Arama Fonksiyonu (Ana Giriş Noktası)
-    window.aramaYap = function() {
-        const arananKelime = searchInput.value.trim().toLocaleLowerCase('tr');
-        const aramaTipi = document.querySelector('input[name="searchType"]:checked').value;
+        /* Arama Kutusu */
+        .search-box { display: flex; gap: 10px; margin-bottom: 50px; }
+        input[type="text"] {
+            flex: 1; padding: 18px 25px; border-radius: 8px; border: none;
+            background: var(--surface); color: var(--text); font-size: 1.1rem; outline: none;
+            box-shadow: 0 4px 8px var(--shadow);
+            transition: box-shadow 0.3s, border 0.3s;
+        }
+        input[type="text"]:focus {
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+        button.search-btn {
+            padding: 0 30px; background-color: var(--primary); color: white;
+            border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; transition: 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 173, 181, 0.3);
+        }
         
-        sonucKutusu.innerHTML = ""; // Temizlik
-        backButtonContainer.innerHTML = ''; // Geri butonu temizliği
+        /* Geri Dön Butonu */
+        .geri-btn {
+            background-color: var(--subtext);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .geri-btn:hover { background-color: #555; }
 
-        if (arananKelime.length === 0) return;
 
-        if (arananKelime.length < 2) {
-            sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
-            return;
+        /* --- SONUÇ KARTLARI --- */
+
+        /* Film Seçim Listesi (Afiş Önizleme) */
+        #filmSecimListesi {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
         }
 
-        const aramaAlani = aramaTipi === 'movie' ? 'film' : 'sanatci';
+        .film-secim-karti {
+            width: 150px;
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-bottom: 3px solid var(--primary); 
+        }
+
+        .film-secim-karti:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 173, 181, 0.3);
+        }
+
+        .film-secim-karti img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .film-secim-karti h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+
+        /* 1. FİLM SONUCU DETAY TASARIMI */
+        .movie-result-card {
+            background: var(--surface);
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .movie-result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 173, 181, 0.15);
+        }
+
+        .movie-header {
+            padding: 15px 25px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            background-color: #F8F8F8; /* Hafif kontrast */
+            color: var(--primary);
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .cast-container { display: flex; }
+
+        .movie-poster-area {
+            width: 160px;
+            flex-shrink: 0;
+            padding: 25px;
+            background: var(--primary-light);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .movie-poster-area img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .cast-list-area {
+            flex-grow: 1;
+            padding: 25px;
+        }
+
+        .cast-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #E0E0E0; /* Daha zarif ayrım */
+            font-size: 0.95rem;
+        }
+        .cast-row:last-child { border-bottom: none; }
+        .role-name { color: var(--text); font-weight: 500; }
+        .artist-name { color: var(--subtext); font-style: italic; }
+
+        /* 2. SANATÇI SONUCU TASARIMI */
+        .artist-result-card {
+            background: var(--surface);
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .artist-result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 173, 181, 0.2);
+        }
+
+        .artist-info h3 { margin: 0; font-size: 1.2rem; color: var(--text); }
+        .artist-info p { margin: 3px 0 0 0; color: var(--subtext); font-size: 0.9rem; }
+
+        .character-tag {
+            background: var(--primary);
+            padding: 8px 18px;
+            border-radius: 20px; /* Yuvarlak kenarlar */
+            font-weight: 600;
+            color: white;
+            font-size: 0.85rem;
+        }
+        .error-msg { color: #f96d6d; text-align: center; font-size: 1.2rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-magic"></i> Dublaj Diyarı</h1>
+            <p>Anında arama sonuçları ile filmleri ve sanatçıları keşfet.</p>
+        </header>
+
+        <div class="search-options">
+            <label class="option-label">
+                <input type="radio" name="searchType" value="movie" checked>
+                <i class="fas fa-film"></i> Film Ara
+            </label>
+            <label class="option-label">
+                <input type="radio" name="searchType" value="artist">
+                <i class="fas fa-user"></i> Sanatçı Ara
+            </label>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Film/Seri adı girin (Örn: Shrek)..." oninput="aramaYap()">
+            <button class="search-btn" id="searchButton" onclick="aramaYap()">ARA</button>
+        </div>
         
-        const bulunanlar = dublajVerileri.filter(kayit => 
-            kayit[aramaAlani].toLocaleLowerCase('tr').includes(arananKelime)
-        );
+        <div id="backButtonContainer" style="margin-bottom: 20px;"></div>
 
-        if (bulunanlar.length === 0) {
-            sonucKutusu.innerHTML = `<div class="error-msg">Aradığınız kriterlere uygun kayıt bulunamadı.</div>`;
-            return;
-        }
-
-        if (aramaTipi === 'movie') {
-            // FİLM ARAMA: Filmleri Grupla ve Seçim Listesini Göster
-            gosterFilmSecimListesi(bulunanlar);
-        } else {
-            // SANATÇI ARAMA: Direkt Detayları Göster
-            gosterSanatciSonuclari(bulunanlar);
-        }
-    }
-    
-    // Film Seçim Listesini Gösterir
-    function gosterFilmSecimListesi(bulunanlar) {
-        // Filmleri sadece tekil isim ve afişe göre grupla (Aynı filmin farklı bölümlerini listeler)
-        const tekilFilmler = {};
-        bulunanlar.forEach(kayit => {
-            if (!tekilFilmler[kayit.film]) {
-                tekilFilmler[kayit.film] = {
-                    afis: kayit.afis,
-                    filmAdi: kayit.film
-                };
-            }
-        });
-
-        let listeHTML = Object.keys(tekilFilmler).map(filmAdi => {
-            const film = tekilFilmler[filmAdi];
-            // Filmin adına tıklandığında detay gösterme fonksiyonunu çağır
-            return `
-                <div class="film-secim-karti" onclick="gosterFilmDetaylari('${filmAdi.replace(/'/g, "\\'")}')">
-                    <img src="${film.afis}" alt="${filmAdi} Afişi">
-                    <h4>${filmAdi}</h4>
-                </div>
-            `;
-        }).join('');
-
-        sonucKutusu.innerHTML = `
-            <h2><i class="fas fa-search"></i> ${searchInput.value} Serisi Sonuçları</h2>
-            <div id="filmSecimListesi">${listeHTML}</div>
-        `;
-    }
-
-    // Tıklanan Filmin Tam Kadrosunu Gösterir
-    window.gosterFilmDetaylari = function(filmAdi) {
-        const detaylar = dublajVerileri.filter(kayit => kayit.film === filmAdi);
-        
-        let kadroHTML = detaylar.map(kisi => `
-            <div class="cast-row">
-                <span class="role-name">${kisi.karakter}</span>
-                <span class="artist-name"><i class="fas fa-microphone"></i> ${kisi.sanatci}</span>
+        <div id="sonucAlani">
             </div>
-        `).join('');
+    </div>
 
-        const afisUrl = detaylar[0].afis || 'placeholder.jpg';
-        
-        // Geri Dön butonu ekle
-        backButtonContainer.innerHTML = `
-            <button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Arama Sonuçlarına Geri Dön</button>
-        `;
-        
-        sonucKutusu.innerHTML = `
-            <div class="movie-result-card">
-                <div class="movie-header"><i class="fas fa-video"></i> ${filmAdi} (Tam Kadro)</div>
-                <div class="cast-container">
-                    <div class="movie-poster-area">
-                        <img src="${afisUrl}" alt="${filmAdi} Afişi">
-                    </div>
-                    <div class="cast-list-area">
-                        ${kadroHTML}
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    // Sanatçı Arama Sonuçlarını Gösterme Fonksiyonu
-    function gosterSanatciSonuclari(bulunanlar) {
-        bulunanlar.forEach(kayit => {
-            const kart = document.createElement('div');
-            kart.className = 'artist-result-card';
-            kart.innerHTML = `
-                <div class="artist-info">
-                    <h3>${kayit.sanatci}</h3>
-                    <p>Film: <strong>${kayit.film}</strong></p>
-                </div>
-                <div class="character-tag">
-                    ${kayit.karakter}
-                </div>
-            `;
-            sonucKutusu.appendChild(kart);
-        });
-    }
-
-    // Olay Dinleyicileri (Event Listeners)
-    updatePlaceholder(); 
-    radioInputs.forEach(radio => {
-        radio.addEventListener('change', updatePlaceholder);
-    });
-    // Buton ve Enter tuşu için olay dinleyicisi artık HTML içindeki 'oninput' ve 'onclick' ile yönetiliyor.
-};
+    <script src="data.js"></script>
+    
+</body>
+</html>

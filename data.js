@@ -1,5 +1,6 @@
-// --- 1. VERİ TABANI (Afişler için yer tutucu eklendi) ---
+// --- 1. VERİ TABANI ---
 const dublajVerileri = [
+    // Verileri buraya afiş linkleriyle birlikte ekliyoruz.
     { film: "Deadpool", karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
     { film: "Deadpool", karakter: "Weasel", sanatci: "Barış Özgenç", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
     { film: "Deadpool", karakter: "Vanessa", sanatci: "Burcu Güneştutar", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
@@ -7,23 +8,23 @@ const dublajVerileri = [
     { film: "Örümcek Adam", karakter: "Peter Parker", sanatci: "Harun Can", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
     { film: "Örümcek Adam", karakter: "May Hala", sanatci: "Gülen Karaman", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
     
-    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "images/BuzDevri" },
+    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
     
     { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    
     { film: "Fight Club", karakter: "Tyler Durden", sanatci: "Umut Tabak", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" },
     { film: "Fight Club", karakter: "Anlatıcı", sanatci: "Murat Şen", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" }
+    // Buraya daha fazla veri ekleyebilirsiniz.
 ];
-// NOT: Yukarıdaki afiş linkleri örnek resimler için "image hosting" servislerine yüklenmiştir. Gerçek projede kendi linklerinizi kullanabilirsiniz.
 
-// --- 2. FONKSİYONLAR VE MANTIK ---
+// --- 2. JAVASCRIPT MANTIĞI ---
+
 window.onload = function() {
     const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
     const sonucKutusu = document.getElementById('sonucAlani');
     const radioInputs = document.querySelectorAll('input[name="searchType"]');
 
-    // Placeholder Güncelleme (Gereklilik)
+    // Placeholder Güncelleme
     function updatePlaceholder() {
         const tip = document.querySelector('input[name="searchType"]:checked').value;
         if (tip === 'movie') {
@@ -31,7 +32,7 @@ window.onload = function() {
         } else {
             searchInput.placeholder = "Seslendirmen adı girin (Örn: Harun Can)...";
         }
-        // Mod değişince hemen arama yap (Ekstra Kullanım Kolaylığı)
+        // Mod değişince hemen arama yap
         aramaYap(); 
     }
 
@@ -42,14 +43,14 @@ window.onload = function() {
         
         sonucKutusu.innerHTML = ""; // Temizlik
 
+        // Eğer arama kutusu boşsa, sonuç gösterme
+        if (arananKelime.length === 0) return;
+
         // Anlık aramada kısa kelimeleri filtrele (performans için)
-        if (arananKelime.length < 2 && arananKelime.length > 0) {
+        if (arananKelime.length < 2) {
             sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
             return;
         }
-        
-        // Eğer arama kutusu boşsa, sonuç gösterme
-        if (arananKelime.length === 0) return;
 
         const aramaAlani = aramaTipi === 'movie' ? 'film' : 'sanatci';
 
@@ -65,7 +66,7 @@ window.onload = function() {
         
         // Sonuçları Gösterme
         if (aramaTipi === 'movie') {
-            // FİLM ARAMA: Gruplama ve Kadro Gösterimi (AFİŞ EKLENDİ)
+            // FİLM ARAMA: Gruplama ve Kadro Gösterimi (AFİŞLİ)
             const filmGruplari = {};
             bulunanlar.forEach(kayit => {
                 if (!filmGruplari[kayit.film]) {
@@ -125,5 +126,5 @@ window.onload = function() {
     radioInputs.forEach(radio => {
         radio.addEventListener('change', updatePlaceholder);
     });
-    // Anlık arama (oninput) HTML'de tanımlı
+    searchButton.addEventListener('click', aramaYap);
 };

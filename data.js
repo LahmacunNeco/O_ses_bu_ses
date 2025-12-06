@@ -1,5 +1,7 @@
-// --- 1. VERİ TABANI (Seri Filmler Eklendi) ---
+// --- 1. VERİ TABANI ---
 const dublajVerileri = [
+    // Lütfen buradaki afiş linklerinin çalıştığından emin olun.
+    
     // Deadpool Serisi
     { film: "Deadpool", bolum: 1, karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
     { film: "Deadpool", bolum: 1, karakter: "Weasel", sanatci: "Barış Özgenç", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
@@ -16,9 +18,9 @@ const dublajVerileri = [
     { film: "Fight Club", bolum: 1, karakter: "Tyler Durden", sanatci: "Umut Tabak", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" },
     { film: "Buz Devri", bolum: 1, karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
 ];
-// NOT: Yukarıdaki afiş linkleri örnek resimler için "image hosting" servislerine yüklenmiştir.
 
 // --- 2. JAVASCRIPT MANTIĞI ---
+
 window.onload = function() {
     const searchInput = document.getElementById('searchInput');
     const sonucKutusu = document.getElementById('sonucAlani');
@@ -33,9 +35,10 @@ window.onload = function() {
         } else {
             searchInput.placeholder = "Seslendirmen adı girin (Örn: Harun Can)...";
         }
-        // Arama tipini değiştirince temizle ve varsayılan listeyi göster (ya da boş bırak)
+        // Arama tipini değiştirince temizle
         sonucKutusu.innerHTML = '';
         backButtonContainer.innerHTML = '';
+        // Arama yap (input boşsa bir şey göstermez)
         aramaYap(); 
     }
 
@@ -47,8 +50,10 @@ window.onload = function() {
         sonucKutusu.innerHTML = ""; // Temizlik
         backButtonContainer.innerHTML = ''; // Geri butonu temizliği
 
+        if (arananKelime.length === 0) return;
+
         if (arananKelime.length < 2) {
-            if (arananKelime.length > 0) sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
+            sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
             return;
         }
 
@@ -64,7 +69,7 @@ window.onload = function() {
         }
 
         if (aramaTipi === 'movie') {
-            // FİLM ARAMA: Önce Filmleri Grupla ve Seçim Listesini Göster
+            // FİLM ARAMA: Filmleri Grupla ve Seçim Listesini Göster
             gosterFilmSecimListesi(bulunanlar);
         } else {
             // SANATÇI ARAMA: Direkt Detayları Göster
@@ -72,9 +77,9 @@ window.onload = function() {
         }
     }
     
-    // YENİ FONKSİYON: Film Seçim Listesini Gösterir
+    // Film Seçim Listesini Gösterir
     function gosterFilmSecimListesi(bulunanlar) {
-        // Filmleri sadece tekil isim ve afişe göre grupla
+        // Filmleri sadece tekil isim ve afişe göre grupla (Aynı filmin farklı bölümlerini listeler)
         const tekilFilmler = {};
         bulunanlar.forEach(kayit => {
             if (!tekilFilmler[kayit.film]) {
@@ -87,9 +92,9 @@ window.onload = function() {
 
         let listeHTML = Object.keys(tekilFilmler).map(filmAdi => {
             const film = tekilFilmler[filmAdi];
-            // Afişe tıklandığında detay gösterme fonksiyonunu çağır
+            // Filmin adına tıklandığında detay gösterme fonksiyonunu çağır
             return `
-                <div class="film-secim-karti" onclick="gosterFilmDetaylari('${filmAdi}')">
+                <div class="film-secim-karti" onclick="gosterFilmDetaylari('${filmAdi.replace(/'/g, "\\'")}')">
                     <img src="${film.afis}" alt="${filmAdi} Afişi">
                     <h4>${filmAdi}</h4>
                 </div>
@@ -97,12 +102,12 @@ window.onload = function() {
         }).join('');
 
         sonucKutusu.innerHTML = `
-            <h2><i class="fas fa-list-ul"></i> ${searchInput.value} Serisi Sonuçları</h2>
+            <h2><i class="fas fa-search"></i> ${searchInput.value} Serisi Sonuçları</h2>
             <div id="filmSecimListesi">${listeHTML}</div>
         `;
     }
 
-    // YENİ FONKSİYON: Tıklanan Filmin Tam Kadrosunu Gösterir
+    // Tıklanan Filmin Tam Kadrosunu Gösterir
     window.gosterFilmDetaylari = function(filmAdi) {
         const detaylar = dublajVerileri.filter(kayit => kayit.film === filmAdi);
         
@@ -117,7 +122,7 @@ window.onload = function() {
         
         // Geri Dön butonu ekle
         backButtonContainer.innerHTML = `
-            <button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Geri Dön</button>
+            <button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Arama Sonuçlarına Geri Dön</button>
         `;
         
         sonucKutusu.innerHTML = `
@@ -135,7 +140,7 @@ window.onload = function() {
         `;
     }
 
-    // Sanatçı Arama Sonuçlarını Gösterme Fonksiyonu (Önceki koddan)
+    // Sanatçı Arama Sonuçlarını Gösterme Fonksiyonu
     function gosterSanatciSonuclari(bulunanlar) {
         bulunanlar.forEach(kayit => {
             const kart = document.createElement('div');
@@ -158,4 +163,5 @@ window.onload = function() {
     radioInputs.forEach(radio => {
         radio.addEventListener('change', updatePlaceholder);
     });
+    // Buton ve Enter tuşu için olay dinleyicisi artık HTML içindeki 'oninput' ve 'onclick' ile yönetiliyor.
 };

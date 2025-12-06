@@ -1,60 +1,59 @@
-// --- 1. VERİ TABANI ---
+// --- 1. VERİ TABANI (Seri Filmler Eklendi) ---
 const dublajVerileri = [
-    // Verileri buraya afiş linkleriyle birlikte ekliyoruz.
-    { film: "Deadpool", karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
-    { film: "Deadpool", karakter: "Weasel", sanatci: "Barış Özgenç", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
-    { film: "Deadpool", karakter: "Vanessa", sanatci: "Burcu Güneştutar", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
+    // Deadpool Serisi
+    { film: "Deadpool", bolum: 1, karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
+    { film: "Deadpool", bolum: 1, karakter: "Weasel", sanatci: "Barış Özgenç", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
+    { film: "Deadpool 2", bolum: 2, karakter: "Wade Wilson (Deadpool)", sanatci: "Harun Can", afis: "https://i.ibb.co/p3N4W4N/deadpool2-poster.jpg" },
+    { film: "Deadpool 2", bolum: 2, karakter: "Cable", sanatci: "Rıza Karaağaç", afis: "https://i.ibb.co/p3N4W4N/deadpool2-poster.jpg" },
     
-    { film: "Örümcek Adam", karakter: "Peter Parker", sanatci: "Harun Can", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
-    { film: "Örümcek Adam", karakter: "May Hala", sanatci: "Gülen Karaman", afis: "https://i.ibb.co/Bnr5c1J/spiderman-poster.jpg" },
+    // Shrek Serisi
+    { film: "Shrek", bolum: 1, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
+    { film: "Shrek", bolum: 1, karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
+    { film: "Shrek 2", bolum: 2, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
+    { film: "Shrek 2", bolum: 2, karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     
-    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
-    
-    { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    { film: "Fight Club", karakter: "Tyler Durden", sanatci: "Umut Tabak", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" },
-    { film: "Fight Club", karakter: "Anlatıcı", sanatci: "Murat Şen", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" }
-    // Buraya daha fazla veri ekleyebilirsiniz.
+    // Diğerleri
+    { film: "Fight Club", bolum: 1, karakter: "Tyler Durden", sanatci: "Umut Tabak", afis: "https://i.ibb.co/y4p1R3y/fight-club-poster.jpg" },
+    { film: "Buz Devri", bolum: 1, karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
 ];
+// NOT: Yukarıdaki afiş linkleri örnek resimler için "image hosting" servislerine yüklenmiştir.
 
 // --- 2. JAVASCRIPT MANTIĞI ---
-
 window.onload = function() {
     const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
     const sonucKutusu = document.getElementById('sonucAlani');
     const radioInputs = document.querySelectorAll('input[name="searchType"]');
+    const backButtonContainer = document.getElementById('backButtonContainer');
 
     // Placeholder Güncelleme
     function updatePlaceholder() {
         const tip = document.querySelector('input[name="searchType"]:checked').value;
         if (tip === 'movie') {
-            searchInput.placeholder = "Film adı girin (Örn: Deadpool)...";
+            searchInput.placeholder = "Film/Seri adı girin (Örn: Shrek)...";
         } else {
             searchInput.placeholder = "Seslendirmen adı girin (Örn: Harun Can)...";
         }
-        // Mod değişince hemen arama yap
+        // Arama tipini değiştirince temizle ve varsayılan listeyi göster (ya da boş bırak)
+        sonucKutusu.innerHTML = '';
+        backButtonContainer.innerHTML = '';
         aramaYap(); 
     }
 
-    // Arama Fonksiyonu (Hem buton hem de oninput ile çağrılır)
+    // Arama Fonksiyonu (Ana Giriş Noktası)
     window.aramaYap = function() {
         const arananKelime = searchInput.value.trim().toLocaleLowerCase('tr');
         const aramaTipi = document.querySelector('input[name="searchType"]:checked').value;
         
         sonucKutusu.innerHTML = ""; // Temizlik
+        backButtonContainer.innerHTML = ''; // Geri butonu temizliği
 
-        // Eğer arama kutusu boşsa, sonuç gösterme
-        if (arananKelime.length === 0) return;
-
-        // Anlık aramada kısa kelimeleri filtrele (performans için)
         if (arananKelime.length < 2) {
-            sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
+            if (arananKelime.length > 0) sonucKutusu.innerHTML = `<div class="error-msg">Aramak için en az 2 karakter girin.</div>`;
             return;
         }
 
         const aramaAlani = aramaTipi === 'movie' ? 'film' : 'sanatci';
-
-        // Filtreleme
+        
         const bulunanlar = dublajVerileri.filter(kayit => 
             kayit[aramaAlani].toLocaleLowerCase('tr').includes(arananKelime)
         );
@@ -63,68 +62,100 @@ window.onload = function() {
             sonucKutusu.innerHTML = `<div class="error-msg">Aradığınız kriterlere uygun kayıt bulunamadı.</div>`;
             return;
         }
-        
-        // Sonuçları Gösterme
+
         if (aramaTipi === 'movie') {
-            // FİLM ARAMA: Gruplama ve Kadro Gösterimi (AFİŞLİ)
-            const filmGruplari = {};
-            bulunanlar.forEach(kayit => {
-                if (!filmGruplari[kayit.film]) {
-                    filmGruplari[kayit.film] = [];
-                }
-                filmGruplari[kayit.film].push(kayit);
-            });
-
-            Object.keys(filmGruplari).forEach(filmAdi => {
-                const kadro = filmGruplari[filmAdi];
-                const afisUrl = kadro[0].afis || 'placeholder.jpg'; // İlk kayıttan afişi al
-
-                let kadroHTML = kadro.map(kisi => `
-                    <div class="cast-row">
-                        <span class="role-name">${kisi.karakter}</span>
-                        <span class="artist-name"><i class="fas fa-microphone"></i> ${kisi.sanatci}</span>
-                    </div>
-                `).join('');
-
-                const kart = document.createElement('div');
-                kart.className = 'movie-result-card';
-                kart.innerHTML = `
-                    <div class="movie-header"><i class="fas fa-video"></i> ${filmAdi}</div>
-                    <div class="cast-container">
-                        <div class="movie-poster-area">
-                            <img src="${afisUrl}" alt="${filmAdi} Afişi">
-                        </div>
-                        <div class="cast-list-area">
-                            ${kadroHTML}
-                        </div>
-                    </div>
-                `;
-                sonucKutusu.appendChild(kart);
-            });
-
+            // FİLM ARAMA: Önce Filmleri Grupla ve Seçim Listesini Göster
+            gosterFilmSecimListesi(bulunanlar);
         } else {
-            // SANATÇI ARAMA: Filmografi (Rol Listesi) Gösterimi
-            bulunanlar.forEach(kayit => {
-                const kart = document.createElement('div');
-                kart.className = 'artist-result-card';
-                kart.innerHTML = `
-                    <div class="artist-info">
-                        <h3>${kayit.sanatci}</h3>
-                        <p>Film: <strong>${kayit.film}</strong></p>
-                    </div>
-                    <div class="character-tag">
-                        ${kayit.karakter}
-                    </div>
-                `;
-                sonucKutusu.appendChild(kart);
-            });
+            // SANATÇI ARAMA: Direkt Detayları Göster
+            gosterSanatciSonuclari(bulunanlar);
         }
     }
     
+    // YENİ FONKSİYON: Film Seçim Listesini Gösterir
+    function gosterFilmSecimListesi(bulunanlar) {
+        // Filmleri sadece tekil isim ve afişe göre grupla
+        const tekilFilmler = {};
+        bulunanlar.forEach(kayit => {
+            if (!tekilFilmler[kayit.film]) {
+                tekilFilmler[kayit.film] = {
+                    afis: kayit.afis,
+                    filmAdi: kayit.film
+                };
+            }
+        });
+
+        let listeHTML = Object.keys(tekilFilmler).map(filmAdi => {
+            const film = tekilFilmler[filmAdi];
+            // Afişe tıklandığında detay gösterme fonksiyonunu çağır
+            return `
+                <div class="film-secim-karti" onclick="gosterFilmDetaylari('${filmAdi}')">
+                    <img src="${film.afis}" alt="${filmAdi} Afişi">
+                    <h4>${filmAdi}</h4>
+                </div>
+            `;
+        }).join('');
+
+        sonucKutusu.innerHTML = `
+            <h2><i class="fas fa-list-ul"></i> ${searchInput.value} Serisi Sonuçları</h2>
+            <div id="filmSecimListesi">${listeHTML}</div>
+        `;
+    }
+
+    // YENİ FONKSİYON: Tıklanan Filmin Tam Kadrosunu Gösterir
+    window.gosterFilmDetaylari = function(filmAdi) {
+        const detaylar = dublajVerileri.filter(kayit => kayit.film === filmAdi);
+        
+        let kadroHTML = detaylar.map(kisi => `
+            <div class="cast-row">
+                <span class="role-name">${kisi.karakter}</span>
+                <span class="artist-name"><i class="fas fa-microphone"></i> ${kisi.sanatci}</span>
+            </div>
+        `).join('');
+
+        const afisUrl = detaylar[0].afis || 'placeholder.jpg';
+        
+        // Geri Dön butonu ekle
+        backButtonContainer.innerHTML = `
+            <button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Geri Dön</button>
+        `;
+        
+        sonucKutusu.innerHTML = `
+            <div class="movie-result-card">
+                <div class="movie-header"><i class="fas fa-video"></i> ${filmAdi} (Tam Kadro)</div>
+                <div class="cast-container">
+                    <div class="movie-poster-area">
+                        <img src="${afisUrl}" alt="${filmAdi} Afişi">
+                    </div>
+                    <div class="cast-list-area">
+                        ${kadroHTML}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Sanatçı Arama Sonuçlarını Gösterme Fonksiyonu (Önceki koddan)
+    function gosterSanatciSonuclari(bulunanlar) {
+        bulunanlar.forEach(kayit => {
+            const kart = document.createElement('div');
+            kart.className = 'artist-result-card';
+            kart.innerHTML = `
+                <div class="artist-info">
+                    <h3>${kayit.sanatci}</h3>
+                    <p>Film: <strong>${kayit.film}</strong></p>
+                </div>
+                <div class="character-tag">
+                    ${kayit.karakter}
+                </div>
+            `;
+            sonucKutusu.appendChild(kart);
+        });
+    }
+
     // Olay Dinleyicileri (Event Listeners)
     updatePlaceholder(); 
     radioInputs.forEach(radio => {
         radio.addEventListener('change', updatePlaceholder);
     });
-    searchButton.addEventListener('click', aramaYap);
 };

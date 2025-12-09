@@ -9,8 +9,8 @@ const dublajVerileri = [
     { film: "Deadpool 2", bolum: 2, karakter: "Cable", sanatci: "Rıza Karaağaç", afis: "https://i.ibb.co/p3N4W4N/deadpool2-poster.jpg" },
     
     // Shrek Serisi
-    { film: "Shrek", bolum: 1, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
-    { film: "Shrek", bolum: 1, karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
+    { film: "Shrek", bolum: 1, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "/images/Shrek.jpg" },
+    { film: "Shrek", bolum: 1, karakter: "Eşek", sanatci: "Sezai Aydın", afis: "/images/Shrek.jpg" },
     { film: "Shrek 2", bolum: 2, karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Shrek 2", bolum: 2, karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     

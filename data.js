@@ -22,7 +22,7 @@ const sanatciProfilleri = {
 
 // --- 2. FİLM VE SESLENDİRME VERİLERİ ---
 const dublajVerileri = [
-    { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
+    { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis:"/images/Shrek.jpg"},
     { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
     { film: "Shrek 2", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Shrek 2", karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },

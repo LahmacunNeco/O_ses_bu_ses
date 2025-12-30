@@ -27,8 +27,8 @@ const dublajVerileri = [
     { film: "Shrek 2", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Shrek 2", karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Deadpool", karakter: "Deadpool", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },
-    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" }
-];
+    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" },
+    { film: "Angry Birds", karakter: "Red", sanatci: "Yekta Kopan", afis: "https://i.ibb.co/T1H89V4/ice-age-poster.jpg" }];
 
 // --- 3. SİSTEM MANTIĞI ---
 

@@ -1,7 +1,7 @@
 // --- 1. SANATÇI DETAYLI VERİTABANI ---
 const sanatciProfilleri = {
     "Harun Can": {
-        resim: "https://r.resimlink.com/LIn8M2mK.jpg",
+        resim: "../images/HarunCan.jpg",
         dogumTarihi: "1980-03-27",
         dogumYeri: "Ankara",
         durum: "Hayatta",
@@ -23,7 +23,7 @@ const sanatciProfilleri = {
 // --- 2. FİLM VE SESLENDİRME VERİLERİ ---
 const dublajVerileri = [
     { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis:"../images/Shrek.jpg"},
-    { film: "Shrek", karakter: "Eşek", sanatci: "Sezai Aydın", afis: "https://i.ibb.co/C0f9y8q/shrek-poster.jpg" },
+    { film: "Shrek", karakter: "Eşek", sanatci: "Mehmet Ali Erbil", afis: ".." },
     { film: "Shrek 2", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Shrek 2", karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "https://i.ibb.co/L9H8bQc/shrek2-poster.jpg" },
     { film: "Deadpool", karakter: "Deadpool", sanatci: "Harun Can", afis: "https://i.ibb.co/6y4gX0d/deadpool-poster.jpg" },

@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanıdık Sesler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        /* Sürüm Etiketi: Final_v3.0_Turkuaz_Bio */
         :root {
-            --primary: #00ADB5; /* Turkuaz Vurgu */
-            --primary-light: #EEEEEE; /* Ana Açık Gri (Arkaplan) */
-            --surface: #FFFFFF; /* Kart Yüzeyi Beyaz */
-            --text: #222831; /* Koyu Gri Metin */
+            --primary: #00ADB5; 
+            --primary-light: #EEEEEE; 
+            --surface: #FFFFFF; 
+            --text: #222831; 
             --subtext: #505560;
             --shadow: rgba(0, 0, 0, 0.08);
         }
@@ -20,293 +18,99 @@
             font-family: 'Poppins', sans-serif; 
             background-color: var(--primary-light);
             color: var(--text);
-            margin: 0;
-            padding: 30px 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
+            margin: 0; padding: 30px 20px;
+            min-height: 100vh; display: flex; justify-content: center;
         }
-        .container {
-            width: 100%;
-            max-width: 900px;
-        }
-        header { text-align: center; margin-bottom: 50px; }
-        header h1 { 
-            color: var(--primary); 
-            font-size: 3rem; 
-            margin-bottom: 5px;
-            letter-spacing: 1.5px;
-            text-shadow: 1px 1px 3px rgba(0, 173, 181, 0.2);
-        }
-        /* Arama Seçenekleri */
-        .search-options {
-            display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;
-        }
+        .container { width: 100%; max-width: 900px; }
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 { color: var(--primary); font-size: 3rem; margin-bottom: 5px; }
+        
+        /* Arama Alanı */
+        .search-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
         .option-label {
             cursor: pointer; padding: 10px 20px; border-radius: 25px; transition: 0.3s;
-            background: var(--surface);
-            border: 1px solid var(--primary-light);
-            box-shadow: 0 2px 5px var(--shadow);
+            background: var(--surface); border: 1px solid var(--primary-light);
         }
         .option-label input { display: none; }
-        .option-label:has(input:checked) { 
-            background-color: var(--primary); 
-            color: white;
-            box-shadow: 0 4px 10px rgba(0, 173, 181, 0.4);
-            font-weight: 600;
-        }
-        .option-label:not(:has(input:checked)) { color: var(--subtext); }
+        .option-label:has(input:checked) { background-color: var(--primary); color: white; font-weight: 600; }
 
-        /* Arama Kutusu */
-        .search-box { display: flex; gap: 10px; margin-bottom: 50px; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
         input[type="text"] {
-            flex: 1; padding: 18px 25px; border-radius: 8px; border: none;
-            background: var(--surface); color: var(--text); font-size: 1.1rem; outline: none;
-            box-shadow: 0 4px 8px var(--shadow);
-            transition: box-shadow 0.3s, border 0.3s;
-        }
-        input[type="text"]:focus {
-            box-shadow: 0 0 0 3px var(--primary);
+            flex: 1; padding: 15px 20px; border-radius: 8px; border: none;
+            background: var(--surface); box-shadow: 0 4px 8px var(--shadow); outline: none;
         }
         button.search-btn {
-            padding: 0 30px; background-color: var(--primary); color: white;
-            border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold;
-            cursor: pointer; transition: 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 173, 181, 0.3);
-        }
-        
-        /* Geri Dön Butonu */
-        .geri-btn {
-            background-color: var(--subtext);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .geri-btn:hover { background-color: #555; }
-
-
-        /* --- SONUÇ KARTLARI --- */
-
-        /* Film Seçim Listesi (Afiş Önizleme) */
-        #filmSecimListesi {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
+            padding: 0 25px; background-color: var(--primary); color: white;
+            border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
         }
 
+        /* Film Seçim Listesi */
+        #filmSecimListesi { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
         .film-secim-karti {
-            width: 150px;
-            background: var(--surface);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px var(--shadow);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-bottom: 3px solid var(--primary); 
+            width: 140px; background: var(--surface); border-radius: 10px; padding: 10px;
+            text-align: center; cursor: pointer; box-shadow: 0 4px 10px var(--shadow); transition: 0.3s;
         }
+        .film-secim-karti:hover { transform: translateY(-5px); }
+        .film-secim-karti img { width: 100%; border-radius: 6px; }
 
-        .film-secim-karti:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 173, 181, 0.3);
+        /* --- SANATÇI PROFİLİ TASARIMI --- */
+        .artist-profile-card {
+            background: var(--surface); border-radius: 15px; overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow); margin-top: 20px;
         }
-
-        .film-secim-karti img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin-bottom: 10px;
+        .profile-header {
+            display: flex; background: linear-gradient(135deg, var(--primary), #008f95);
+            color: white; padding: 30px; align-items: center; gap: 30px;
         }
-
-        .film-secim-karti h4 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text);
+        .profile-img {
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.2);
         }
+        .profile-main-info h2 { margin: 0; font-size: 2rem; }
+        .profile-body { padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .info-group { margin-bottom: 15px; }
+        .info-label { font-weight: bold; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+        .info-value { font-size: 1.1rem; color: var(--text); }
+        .bio-section { grid-column: span 2; border-top: 1px solid #eee; padding-top: 20px; }
+        .bio-text { line-height: 1.6; color: var(--subtext); }
 
-
-        /* 1. FİLM SONUCU DETAY TASARIMI */
-        .movie-result-card {
-            background: var(--surface);
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px var(--shadow);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        .movie-result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 173, 181, 0.15);
-        }
-
-        .movie-header {
-            padding: 15px 25px;
-            font-size: 1.6rem;
-            font-weight: 600;
-            background-color: #F8F8F8; /* Hafif kontrast */
-            color: var(--primary);
-            border-bottom: 1px solid #E0E0E0;
-        }
-
+        /* Film Detay Kartı */
+        .movie-result-card { background: var(--surface); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px var(--shadow); }
+        .movie-header { padding: 15px 25px; font-size: 1.5rem; background: #f8f8f8; color: var(--primary); border-bottom: 1px solid #eee; }
         .cast-container { display: flex; }
+        .movie-poster-area { width: 150px; padding: 20px; background: #fafafa; }
+        .movie-poster-area img { width: 100%; border-radius: 6px; }
+        .cast-list-area { flex: 1; padding: 20px; }
+        .cast-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee; }
+        .artist-link { color: var(--primary); cursor: pointer; font-weight: 600; text-decoration: underline; }
 
-        .movie-poster-area {
-            width: 160px;
-            flex-shrink: 0;
-            padding: 25px;
-            background: var(--primary-light);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+        .geri-btn {
+            background: var(--subtext); color: white; border: none; padding: 10px 20px;
+            border-radius: 8px; cursor: pointer; margin-bottom: 20px;
         }
-
-        .movie-poster-area img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 10px var(--shadow);
-        }
-
-        .cast-list-area {
-            flex-grow: 1;
-            padding: 25px;
-        }
-
-        .cast-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #E0E0E0; /* Daha zarif ayrım */
-            font-size: 0.95rem;
-        }
-        .cast-row:last-child { border-bottom: none; }
-        .role-name { color: var(--text); font-weight: 500; }
-        .artist-name { color: var(--subtext); font-style: italic; }
-
-
-        /* 2. SANATÇI DETAYI (Yeni) */
-        .artist-detail-card {
-            background: var(--surface);
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px var(--shadow);
-            padding: 30px;
-        }
-        .artist-header {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--primary-light);
-            padding-bottom: 15px;
-        }
-        .artist-img-container {
-            flex-shrink: 0;
-            width: 150px;
-            height: 150px;
-        }
-        .artist-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%; /* Yuvarlak Resim */
-            border: 4px solid var(--primary);
-            box-shadow: 0 4px 10px var(--shadow);
-        }
-        .artist-summary h2 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 2rem;
-        }
-        .artist-summary p {
-            margin: 5px 0;
-            font-size: 0.95rem;
-        }
-        .artist-bio h3 {
-            color: var(--text);
-            margin-top: 20px;
-            border-bottom: 2px solid var(--primary);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        .artist-bio-text {
-            line-height: 1.6;
-            color: var(--subtext);
-        }
-
-        /* 3. SANATÇI SONUCU TASARIMI (Listeleme) */
-        .artist-result-card {
-            background: var(--surface);
-            padding: 20px 25px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 12px var(--shadow);
-            border-left: 5px solid var(--primary);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer; /* Tıklanabilir olduğunu belirtir */
-        }
-
-        .artist-result-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 173, 181, 0.2);
-        }
-
-        .artist-info h3 { margin: 0; font-size: 1.2rem; color: var(--text); }
-        .artist-info p { margin: 3px 0 0 0; color: var(--subtext); font-size: 0.9rem; }
-
-        .character-tag {
-            background: var(--primary);
-            padding: 8px 18px;
-            border-radius: 20px; /* Yuvarlak kenarlar */
-            font-weight: 600;
-            color: white;
-            font-size: 0.85rem;
-        }
-        .error-msg { color: #f96d6d; text-align: center; font-size: 1.2rem; margin-top: 20px; }
+        .error-msg { text-align: center; color: #f96d6d; margin-top: 20px; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1><i class="fas fa-volume-up"></i> Tanıdık Sesler</h1>
-            <p>Anında arama sonuçları ile filmleri ve sanatçıları keşfet.</p>
+            <p>Sanatçıların hayatını ve seslendirdiği karakterleri keşfedin.</p>
         </header>
 
         <div class="search-options">
-            <label class="option-label">
-                <input type="radio" name="searchType" value="movie" checked>
-                <i class="fas fa-film"></i> Film Ara
-            </label>
-            <label class="option-label">
-                <input type="radio" name="searchType" value="artist">
-                <i class="fas fa-user"></i> Sanatçı Ara
-            </label>
+            <label class="option-label"><input type="radio" name="searchType" value="movie" checked> Film Ara</label>
+            <label class="option-label"><input type="radio" name="searchType" value="artist"> Sanatçı Ara</label>
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Film/Seri adı girin (Örn: Shrek)..." oninput="aramaYap()">
-            <button class="search-btn" id="searchButton" onclick="aramaYap()">ARA</button>
+            <input type="text" id="searchInput" placeholder="Aramaya başlayın..." oninput="aramaYap()">
+            <button class="search-btn" onclick="aramaYap()">ARA</button>
         </div>
         
-        <div id="backButtonContainer" style="margin-bottom: 20px;"></div>
-
-        <div id="sonucAlani">
-            </div>
+        <div id="backButtonContainer"></div>
+        <div id="sonucAlani"></div>
     </div>
-
     <script src="data.js"></script>
-    
 </body>
 </html>

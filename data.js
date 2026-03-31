@@ -1,7 +1,7 @@
 // --- 1. SANATÇI DETAYLI VERİTABANI ---
 const sanatciProfilleri = {
     "Harun Can": {
-        resim: "../images/HarunCan.jpg",
+        resim: "images/HarunCan.jpg",
         dogumTarihi: "1980-03-27",
         dogumYeri: "Ankara",
         durum: "Hayatta",
@@ -10,7 +10,7 @@ const sanatciProfilleri = {
         biyografi: "Harun Can, Türk seslendirme sanatçısı ve müzisyendir. Özellikle Deadpool ve Örümcek Adam seslendirmeleriyle geniş kitlelerce tanınmıştır."
     },
     "Yekta Kopan": {
-        resim: "../images/YektaKopan.jpg",
+        resim: "images/YektaKopan.jpg",
         dogumTarihi: "1968-03-28",
         dogumYeri: "Ankara",
         durum: "Hayatta",
@@ -22,13 +22,14 @@ const sanatciProfilleri = {
 
 // --- 2. FİLM VE SESLENDİRME VERİLERİ ---
 const dublajVerileri = [
-    { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis:"../images/Shrek.jpg" },
-    { film: "Shrek", karakter: "Eşek", sanatci: "Mehmet Ali Erbil", afis: "../images/Shrek.jpg" },
-    { film: "Shrek 2", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "../images/Shrek2.jpg" },
-    { film: "Shrek 2", karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "../images/Shrek2.jpg" },
-    { film: "Deadpool", karakter: "Deadpool", sanatci: "Harun Can", afis: "../images/Deadpool.png" },
-    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "../images/BuzDevri.jpeg" },
-    { film: "Angry Birds", karakter: "Red", sanatci: "Yekta Kopan", afis: "../images/AngryBirds.jpg" }];
+    { film: "Shrek", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "images/Shrek.jpg" },
+    { film: "Shrek", karakter: "Eşek", sanatci: "Mehmet Ali Erbil", afis: "images/Shrek.jpg" },
+    { film: "Shrek 2", karakter: "Shrek", sanatci: "Okan Bayülgen", afis: "images/Shrek2.jpg" },
+    { film: "Shrek 2", karakter: "Çizmeli Kedi", sanatci: "Engin Altan Düzyatan", afis: "images/Shrek2.jpg" },
+    { film: "Deadpool", karakter: "Deadpool", sanatci: "Harun Can", afis: "images/Deadpool.png" },
+    { film: "Buz Devri", karakter: "Sid", sanatci: "Yekta Kopan", afis: "images/BuzDevri.jpeg" },
+    { film: "Angry Birds", karakter: "Red", sanatci: "Yekta Kopan", afis: "images/AngryBirds.jpg" }
+];
 
 // --- 3. SİSTEM MANTIĞI ---
 
@@ -38,7 +39,7 @@ window.onload = function() {
     const backButtonContainer = document.getElementById('backButtonContainer');
 
     function yasHesapla(dogumStr) {
-        if(!dogumStr) return "Bilinmiyor";
+        if(!dogumStr || dogumStr === "Bilgi Yok") return "Bilinmiyor";
         const dogum = new Date(dogumStr);
         const simdi = new Date();
         let yas = simdi.getFullYear() - dogum.getFullYear();
@@ -55,17 +56,14 @@ window.onload = function() {
         if (aranan.length < 2) return;
 
         if (tip === 'movie') {
-            // Film araması: Seri isimlerini bulur
             const bulunanlar = dublajVerileri.filter(d => d.film.toLocaleLowerCase('tr').includes(aranan));
             gosterFilmSecimListesi(bulunanlar);
         } else {
-            // Sanatçı araması: Sanatçının adını arar
             const bulunanlar = dublajVerileri.filter(d => d.sanatci.toLocaleLowerCase('tr').includes(aranan));
-            gosterSanatciSonuclari(bulunanlar, aranan);
+            gosterSanatciSonuclari(bulunanlar);
         }
     };
 
-    // FİLM ARAMA SONUCU: Afişli Liste
     function gosterFilmSecimListesi(liste) {
         if (liste.length === 0) { sonucKutusu.innerHTML = "<p class='error-msg'>Film bulunamadı.</p>"; return; }
         
@@ -76,9 +74,10 @@ window.onload = function() {
 
         let html = `<div id="filmSecimListesi">`;
         Object.keys(tekilFilmler).forEach(fName => {
+            const safeName = fName.replace(/'/g, "\\'");
             html += `
-                <div class="film-secim-karti" onclick="gosterFilmDetay('${fName.replace(/'/g, "\\ Baltimore")}')">
-                    <img src="${tekilFilmler[fName]}" alt="${fName}">
+                <div class="film-secim-karti" onclick="gosterFilmDetay('${safeName}')">
+                    <img src="${tekilFilmler[fName]}" alt="${fName}" onerror="this.src='https://via.placeholder.com/160x230?text=Resim+Yok'">
                     <h4>${fName}</h4>
                 </div>`;
         });
@@ -86,7 +85,6 @@ window.onload = function() {
         sonucKutusu.innerHTML = html;
     }
 
-    // FİLM DETAYI: Kadro
     window.gosterFilmDetay = function(fName) {
         const kadro = dublajVerileri.filter(d => d.film === fName);
         backButtonContainer.innerHTML = `<button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Geri Dön</button>`;
@@ -94,7 +92,7 @@ window.onload = function() {
         let kadroHtml = kadro.map(k => `
             <div class="cast-row">
                 <span><strong>${k.karakter}</strong></span>
-                <span class="artist-link" onclick="gosterSanatciProfil('${k.sanatci}')">${k.sanatci}</span>
+                <span class="artist-link" onclick="gosterSanatciProfil('${k.sanatci.replace(/'/g, "\\'")}')">${k.sanatci}</span>
             </div>
         `).join('');
 
@@ -102,36 +100,36 @@ window.onload = function() {
             <div class="movie-result-card">
                 <div class="movie-header">${fName} Seslendirme Kadrosu</div>
                 <div class="cast-container">
-                    <div class="movie-poster-area"><img src="${kadro[0].afis}"></div>
+                    <div class="movie-poster-area">
+                        <img src="${kadro[0].afis}" onerror="this.src='https://via.placeholder.com/220x310?text=Afiş+Yok'">
+                    </div>
                     <div class="cast-list-area">${kadroHtml}</div>
                 </div>
             </div>`;
     };
 
-    // SANATÇI ARAMA SONUCU: Karakter Listesi
-    function gosterSanatciSonuclari(liste, aranan) {
+    function gosterSanatciSonuclari(liste) {
         if (liste.length === 0) { sonucKutusu.innerHTML = "<p class='error-msg'>Sanatçı bulunamadı.</p>"; return; }
         
-        // Sanatçı isimlerini grupla
         const sanatciGruplari = [...new Set(liste.map(l => l.sanatci))];
 
         sonucKutusu.innerHTML = sanatciGruplari.map(sName => {
             const roles = liste.filter(l => l.sanatci === sName);
+            const safeName = sName.replace(/'/g, "\\'");
             return `
                 <div class="artist-result-card" style="background:white; padding:20px; border-radius:12px; margin-bottom:15px; box-shadow:0 4px 10px rgba(0,0,0,0.05); border-left:6px solid var(--primary);">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <div>
                             <h3 style="margin:0; color:var(--text);">${sName}</h3>
-                            <p style="margin:5px 0; color:var(--subtext);">Bu sanatçının seslendirdiği <strong>${roles.length}</strong> karakter bulundu.</p>
+                            <p style="margin:5px 0; color:var(--subtext);">Bu sanatçının seslendirdiği <strong>${roles.length}</strong> karakter sistemde kayıtlı.</p>
                         </div>
-                        <button class="search-btn" onclick="gosterSanatciProfil('${sName}')">Profili Gör</button>
+                        <button class="search-btn" onclick="gosterSanatciProfil('${safeName}')">Profili Gör</button>
                     </div>
                 </div>
             `;
         }).join('');
     }
 
-    // SANATÇI PROFİLİ: Detaylı Bilgi + Filmografi
     window.gosterSanatciProfil = function(isim) {
         const p = sanatciProfilleri[isim];
         const roller = dublajVerileri.filter(d => d.sanatci === isim);
@@ -139,7 +137,17 @@ window.onload = function() {
         backButtonContainer.innerHTML = `<button class="geri-btn" onclick="aramaYap()"><i class="fas fa-arrow-left"></i> Geri Dön</button>`;
         
         if (!p) {
-            sonucKutusu.innerHTML = `<div class="artist-profile-card"><div class="profile-body"><p class="error-msg">${isim} hakkında henüz detaylı biyografi eklenmemiş. <br><br> <strong>Seslendirdiği Filmler:</strong> ${roller.map(r => r.film).join(", ")}</p></div></div>`;
+            sonucKutusu.innerHTML = `
+                <div class="artist-profile-card">
+                    <div class="profile-body">
+                        <h3>${isim}</h3>
+                        <p class="error-msg">Bu sanatçı hakkında henüz detaylı biyografi eklenmemiş.</p>
+                        <div class="filmography-section">
+                            <div class="info-label">Seslendirdiği Bilinen Karakterler</div>
+                            <ul>${roller.map(r => `<li><strong>${r.film}</strong>: ${r.karakter}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                </div>`;
             return;
         }
 
@@ -149,16 +157,16 @@ window.onload = function() {
         sonucKutusu.innerHTML = `
             <div class="artist-profile-card">
                 <div class="profile-header">
-                    <img src="${p.resim}" class="profile-img">
+                    <img src="${p.resim}" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=Resim+Yok'">
                     <div class="profile-main-info">
-                        <h2>${isim}</h2>
-                        <p><i class="fas fa-birthday-cake"></i> ${yas} Yaşında</p>
+                        <h2 style="margin:0">${isim}</h2>
+                        <p style="margin:10px 0 0 0"><i class="fas fa-birthday-cake"></i> ${yas} Yaşında</p>
                     </div>
                 </div>
                 <div class="profile-body">
-                    <div class="info-group"><div class="info-label">Doğum</div><div class="info-value">${p.dogumTarihi} / ${p.dogumYeri}</div></div>
+                    <div class="info-group"><div class="info-label">Doğum Tarihi</div><div class="info-value">${p.dogumTarihi}</div></div>
+                    <div class="info-group"><div class="info-label">Doğum Yeri</div><div class="info-value">${p.dogumYeri}</div></div>
                     <div class="info-group"><div class="info-label">Durum</div><div class="info-value">${p.durum}</div></div>
-                    <div class="info-group"><div class="info-label">Ebeveynler</div><div class="info-value">${p.ebeveynler}</div></div>
                     <div class="info-group"><div class="info-label">Çocuklar</div><div class="info-value">${p.cocuklar}</div></div>
                     <div class="bio-section"><div class="info-label">Biyografi</div><p>${p.biyografi}</p></div>
                     <div class="filmography-section">

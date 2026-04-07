@@ -19,14 +19,16 @@
             color: var(--text); margin: 0; padding: 30px 20px; min-height: 100vh;
             display: flex; justify-content: center;
         }
-        .container { width: 100%; max-width: 900px; }
+        .container { width: 100%; max-width: 950px; }
         header { text-align: center; margin-bottom: 40px; }
         header h1 { color: var(--primary); font-size: 2.8rem; margin: 0; }
-        
+        header p { color: var(--subtext); margin-top: 5px; }
+
+        /* Arama Seçenekleri */
         .search-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
         .option-label {
             cursor: pointer; padding: 10px 20px; border-radius: 25px; transition: 0.3s;
-            background: var(--surface); border: 1px solid #ddd;
+            background: var(--surface); border: 1px solid #ddd; font-size: 0.9rem;
         }
         .option-label input { display: none; }
         .option-label:has(input:checked) { background-color: var(--primary); color: white; border-color: var(--primary); font-weight: 600; }
@@ -41,6 +43,7 @@
             border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
         }
 
+        /* Film Seçim Listesi (Görseller) */
         #filmSecimListesi { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
         .film-secim-karti {
             width: 160px; background: var(--surface); border-radius: 10px; padding: 10px;
@@ -48,9 +51,31 @@
             border-bottom: 4px solid var(--primary);
         }
         .film-secim-karti:hover { transform: translateY(-5px); }
-        .film-secim-karti img { width: 100%; height: 230px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; background: #eee; }
+        .film-secim-karti img { width: 100%; height: 230px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; background: #ddd; }
         .film-secim-karti h4 { margin: 0; font-size: 0.9rem; color: var(--text); }
 
+        /* --- FİLM DETAY KARTI (TABLO DÜZENİ) --- */
+        .movie-result-card { background: var(--surface); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px var(--shadow); }
+        .movie-header { padding: 18px 25px; font-size: 1.5rem; background: #fdfdfd; color: var(--primary); border-bottom: 1px solid #eee; font-weight: 600; }
+        .cast-container { display: flex; flex-direction: column; }
+        
+        .cast-header-row {
+            display: grid; grid-template-columns: 60px 1.5fr 1fr 1fr;
+            padding: 10px 25px; background: #f1f1f1; font-weight: bold; font-size: 0.8rem; color: var(--subtext); text-transform: uppercase;
+        }
+
+        .cast-row {
+            display: grid; grid-template-columns: 60px 1.5fr 1fr 1fr;
+            align-items: center; padding: 12px 25px; border-bottom: 1px solid #eee;
+        }
+        .cast-row:last-child { border-bottom: none; }
+        
+        .char-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; background: #eee; border: 2px solid var(--primary-light); }
+        .char-name { font-weight: 600; color: var(--text); }
+        .orig-actor { color: var(--subtext); font-size: 0.9rem; }
+        .artist-link { color: var(--primary); cursor: pointer; font-weight: 600; text-decoration: underline; }
+
+        /* --- SANATÇI PROFİLİ --- */
         .artist-profile-card { background: var(--surface); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px var(--shadow); margin-top: 10px; }
         .profile-header { display: flex; background: linear-gradient(135deg, var(--primary), #008f95); color: white; padding: 30px; align-items: center; gap: 30px; }
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255,255,255,0.3); background: #eee; }
@@ -58,25 +83,25 @@
         .info-group { margin-bottom: 10px; }
         .info-label { font-weight: bold; color: var(--primary); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 5px; }
         .bio-section, .filmography-section { grid-column: span 2; border-top: 1px solid #eee; padding-top: 20px; }
-
-        .movie-result-card { background: var(--surface); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px var(--shadow); }
-        .movie-header { padding: 15px 25px; font-size: 1.5rem; background: #f8f8f8; color: var(--primary); border-bottom: 1px solid #eee; font-weight: 600; }
-        .cast-container { display: flex; flex-wrap: wrap; }
-        .movie-poster-area { width: 220px; padding: 20px; background: #fafafa; }
-        .movie-poster-area img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .cast-list-area { flex: 1; padding: 25px; min-width: 300px; }
-        .cast-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #eee; }
-        .artist-link { color: var(--primary); cursor: pointer; font-weight: 600; text-decoration: underline; }
+        .filmography-list { list-style: none; padding: 0; }
+        .filmography-list li { padding: 8px 0; border-bottom: 1px dashed #eee; }
 
         .geri-btn { background: var(--subtext); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
         .error-msg { text-align: center; color: #f96d6d; margin-top: 20px; font-size: 1.1rem; }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 600px) {
+            .cast-header-row { display: none; }
+            .cast-row { grid-template-columns: 50px 1fr; gap: 10px; padding: 15px; }
+            .orig-actor, .artist-link { grid-column: 2; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1><i class="fas fa-volume-up"></i> Tanıdık Sesler</h1>
-            <p>Hep duyduğunuz ama adını bilmediğimiz sesler...</p>
+            <p>Karakterlerin arkasındaki ses dünyasını keşfedin.</p>
         </header>
 
         <div class="search-options">
@@ -85,7 +110,7 @@
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Aramaya başlayın..." oninput="aramaYap()">
+            <input type="text" id="searchInput" placeholder="Film veya sanatçı arayın..." oninput="aramaYap()">
             <button class="search-btn" onclick="aramaYap()">ARA</button>
         </div>
         

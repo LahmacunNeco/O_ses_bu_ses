@@ -7,57 +7,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #00ADB5; 
-            --primary-light: #EEEEEE; 
-            --surface: #FFFFFF; 
-            --text: #222831; 
-            --subtext: #505560;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --primary: #00ADB5;
+            --surface: #FFFFFF;
+            --bg: #EEEEEE;
+            --text: #222831;
+            --subtext: #393E46;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--primary-light);
-            color: var(--text); margin: 0; padding: 20px; min-height: 100vh;
-        }
-        .container { width: 100%; max-width: 1000px; margin: 0 auto; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
         header { text-align: center; margin-bottom: 30px; }
-        header h1 { color: var(--primary); font-size: 2.8rem; margin: 0; }
+        header h1 { color: var(--primary); font-size: 2.5rem; margin: 0; }
+
+        /* Arama Alanı */
+        .search-container { background: var(--surface); padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .options { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+        .options label { cursor: pointer; font-weight: bold; }
         
-        /* Arama Paneli */
-        .search-area { background: var(--surface); padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px var(--shadow); margin-bottom: 30px; }
-        .search-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .option-label { cursor: pointer; padding: 10px 20px; border-radius: 25px; background: #f1f1f1; border: 1px solid #ddd; font-weight: 500; }
-        .option-label input { display: none; }
-        .option-label:has(input:checked) { background: var(--primary); color: white; border-color: var(--primary); }
+        .search-box { display: flex; gap: 10px; }
+        #searchInput { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; outline: none; }
+        #searchInput:focus { border-color: var(--primary); }
+        .btn-ara { background: var(--primary); color: white; border: none; padding: 0 25px; border-radius: 8px; cursor: pointer; font-weight: bold; }
 
-        .search-input-group { display: flex; gap: 10px; }
-        input[type="text"] { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-size: 1rem; outline: none; }
-        input[type="text"]:focus { border-color: var(--primary); }
-        .search-btn { padding: 0 25px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
-
-        /* Kart ve Tablo Tasarımları */
+        /* Sonuçlar */
         .movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
-        .movie-card { background: var(--surface); border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 4px 10px var(--shadow); transition: 0.3s; }
-        .movie-card:hover { transform: translateY(-5px); }
-        .movie-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-
-        .detail-card { background: var(--surface); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px var(--shadow); }
-        .detail-header { padding: 25px; background: #fafafa; border-bottom: 2px solid var(--primary-light); }
-        .studio-badge { display: inline-block; background: #e0f7f8; color: var(--primary); padding: 5px 12px; border-radius: 5px; font-size: 0.9rem; font-weight: bold; margin-top: 10px; }
-
+        .movie-card { background: white; padding: 10px; border-radius: 12px; text-align: center; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .movie-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+        
+        /* Tablo */
+        .detail-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .detail-header { padding: 20px; background: #f9f9f9; border-bottom: 2px solid var(--primary); }
         .cast-table { width: 100%; border-collapse: collapse; }
-        .cast-table th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 0.85rem; color: var(--subtext); border-bottom: 2px solid #eee; }
-        .cast-table td { padding: 15px; border-bottom: 1px solid #f1f1f1; vertical-align: middle; }
+        .cast-table th { background: #f1f1f1; padding: 12px; text-align: left; font-size: 0.9rem; }
+        .cast-table td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+        .char-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
         
-        .char-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-right: 15px; border: 2px solid var(--primary-light); }
         .artist-link { color: var(--primary); font-weight: bold; cursor: pointer; text-decoration: underline; }
-
-        /* Sanatçı Profili */
-        .profile-header { background: var(--primary); color: white; padding: 40px; display: flex; align-items: center; gap: 30px; }
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.2); }
-        .profile-content { padding: 30px; }
-        
-        .back-btn { background: var(--subtext); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
-        .error-msg { text-align: center; padding: 50px; color: #ff5e5e; }
+        .back-btn { background: var(--subtext); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
     </style>
-</head
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-microphone"></i> Tanıdık Sesler</h1>
+    </header>
+
+    <div class="search-container">
+        <div class="options">
+            <label><input type="radio" name="stype" value="movie" checked> Film</label>
+            <label><input type="radio" name="stype" value="artist"> Sanatçı</label>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Aramaya başlayın...">
+            <button class="btn-ara" onclick="aramaYap()">ARA</button>
+        </div>
+    </div>
+
+    <div id="backBtnArea"></div>
+    <div id="sonucAlani"></div>
+</div>
+
+<script src="data.js"></script>
+</body>
+</html>

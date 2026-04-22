@@ -1,150 +1,146 @@
-// --- VERİTABANI ---
-const sanatciProfilleri = {
-    "Okan Bayülgen": {
-        resim: "images/OkanBayulgen.jpg",
-        bio: "Ünlü şovmen, oyuncu ve Shrek'in Türkçe sesidir.",
-        dogum: "1964, İstanbul"
-    },
-    "Harun Can": {
-        resim: "images/HarunCan.jpg",
-        bio: "Deadpool, Spider-Man gibi karakterlerin efsane sesidir.",
-        dogum: "1980, Ankara"
-    }
-};
-
+// 1. VERİLER (Burası senin kütüphanen)
 const dublajVerileri = [
     { 
         film: "Shrek", 
         karakter: "Shrek", 
-        kResim: "images/char_shrek.jpg", 
-        oSes: "Mike Myers", 
-        tSes: "Okan Bayülgen", 
+        karakterResim: "images/shrek1_shrek.jpg", 
+        orijinalSes: "Mike Myers", 
+        sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek1.jpg" 
+        afis: "images/shrek1_afis.jpg" 
     },
     { 
         film: "Shrek", 
         karakter: "Eşek", 
-        kResim: "images/char_donkey.jpg", 
-        oSes: "Eddie Murphy", 
-        tSes: "Mehmet Ali Erbil", 
+        karakterResim: "images/shrek1_donkey.jpg", 
+        orijinalSes: "Eddie Murphy", 
+        sanatci: "Mehmet Ali Erbil", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek1.jpg" 
+        afis: "images/shrek1_afis.jpg" 
     },
     { 
         film: "Shrek 2", 
         karakter: "Shrek", 
-        kResim: "images/char_shrek.jpg", 
-        oSes: "Mike Myers", 
-        tSes: "Okan Bayülgen", 
+        karakterResim: "images/shrek2_shrek.jpg", 
+        orijinalSes: "Mike Myers", 
+        sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek2.jpg" 
+        afis: "images/shrek2_afis.jpg" 
     },
     { 
         film: "Shrek 2", 
         karakter: "Çizmeli Kedi", 
-        kResim: "images/char_puss.jpg", 
-        oSes: "Antonio Banderas", 
-        tSes: "Engin Altan Düzyatan", 
+        karakterResim: "images/shrek2_puss.jpg", 
+        orijinalSes: "Antonio Banderas", 
+        sanatci: "Engin Altan Düzyatan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek2.jpg" 
+        afis: "images/shrek2_afis.jpg" 
     }
 ];
 
-// --- MOTOR ---
+// Sanatçı detayları (Profil için)
+const sanatciBilgileri = {
+    "Okan Bayülgen": { dogum: "1964, İstanbul", bio: "Ünlü şovmen ve seslendirme sanatçısı." },
+    "Engin Altan Düzyatan": { dogum: "1979, İzmir", bio: "Başarılı oyuncu ve seslendirme sanatçısı." }
+};
+
+// 2. FONKSİYONLAR (Sistemin kalbi)
 
 function aramaYap() {
-    const term = document.getElementById('searchInput').value.toLowerCase().trim();
-    const type = document.querySelector('input[name="stype"]:checked').value;
+    const input = document.getElementById('searchInput').value.toLowerCase().trim();
+    const type = document.querySelector('input[name="searchType"]:checked').value;
     const alan = document.getElementById('sonucAlani');
-    const bArea = document.getElementById('backBtnArea');
+    const nav = document.getElementById('navArea');
 
     alan.innerHTML = "";
-    bArea.innerHTML = "";
+    nav.innerHTML = "";
 
-    if(term.length < 2) return;
+    if (input.length < 2) return;
 
-    if(type === "movie") {
-        const filtrelenmis = dublajVerileri.filter(d => d.film.toLowerCase().includes(term));
-        const tekiller = [...new Set(filtrelenmis.map(f => f.film))];
-        
-        let html = `<div class="movie-grid">`;
-        tekiller.forEach(fName => {
-            const veri = filtrelenmis.find(x => x.film === fName);
+    if (type === "movie") {
+        // Filmleri filtrele
+        const sonuclar = dublajVerileri.filter(d => d.film.toLowerCase().includes(input));
+        // Aynı filmi birden fazla göstermemek için grupla
+        const tekilFilmler = [...new Set(sonuclar.map(s => s.film))];
+
+        if (tekilFilmler.length === 0) {
+            alan.innerHTML = "<b>Sonuç bulunamadı.</b>";
+            return;
+        }
+
+        let html = `<div class="results-grid">`;
+        tekilFilmler.forEach(fName => {
+            const filmVerisi = sonuclar.find(x => x.film === fName);
             html += `
-                <div class="movie-card" onclick="detayGoster('${fName}')">
-                    <img src="${veri.afis}" onerror="this.src='https://via.placeholder.com/180x250?text=Film'">
-                    <h3>${fName}</h3>
+                <div class="movie-card" onclick="filmDetayGetir('${fName}')">
+                    <img src="${filmVerisi.afis}" onerror="this.src='https://via.placeholder.com/160x220?text=Film'">
+                    <h4>${fName}</h4>
                 </div>`;
         });
         html += `</div>`;
         alan.innerHTML = html;
+
     } else {
-        const filtrelenmis = dublajVerileri.filter(d => d.tSes.toLowerCase().includes(term));
-        const isimler = [...new Set(filtrelenmis.map(f => f.tSes))];
-        
+        // Sanatçı ara
+        const sonuclar = dublajVerileri.filter(d => d.sanatci.toLowerCase().includes(input));
+        const isimler = [...new Set(sonuclar.map(s => s.sanatci))];
+
         alan.innerHTML = isimler.map(isim => `
             <div class="movie-card" style="width:100%; display:flex; justify-content:space-between; align-items:center; padding:15px; margin-bottom:10px;">
                 <h3 style="margin:0">${isim}</h3>
-                <button class="btn-ara" onclick="profilGoster('${isim}')">Profili Gör</button>
+                <button class="btn" onclick="sanatciProfilGetir('${isim}')">Profili Gör</button>
             </div>
         `).join('');
     }
 }
 
-function detayGoster(filmAd) {
-    const kadro = dublajVerileri.filter(d => d.film === filmAd);
+function filmDetayGetir(filmAdi) {
+    const kadro = dublajVerileri.filter(d => d.film === filmAdi);
     const alan = document.getElementById('sonucAlani');
-    const bArea = document.getElementById('backBtnArea');
+    const nav = document.getElementById('navArea');
 
-    bArea.innerHTML = `<button class="back-btn" onclick="aramaYap()">← Geri Dön</button>`;
+    nav.innerHTML = `<button class="back-btn" onclick="aramaYap()">← Geri Dön</button>`;
 
     let html = `
-        <div class="detail-card">
+        <div class="detail-box">
             <div class="detail-header">
-                <h2>${filmAd}</h2>
-                <p><strong>Stüdyo:</strong> ${kadro[0].studyo}</p>
+                <h2 style="margin:0">${filmAdi}</h2>
+                <div class="studio-text"><i class="fas fa-building"></i> Stüdyo: ${kadro[0].studyo}</div>
             </div>
-            <table class="cast-table">
-                <thead>
-                    <tr><th>Resim</th><th>Karakter</th><th>Orijinal Ses</th><th>Türkçe Ses</th></tr>
-                </thead>
-                <tbody>`;
+            <table>
+                <tr><th>Resim</th><th>Karakter</th><th>Orijinal Ses</th><th>Türkçe Ses</th></tr>`;
     
     kadro.forEach(k => {
         html += `
             <tr>
-                <td><img src="${k.kResim}" class="char-img" onerror="this.src='https://via.placeholder.com/50'"></td>
-                <td><strong>${k.karakter}</strong></td>
-                <td>${k.oSes}</td>
-                <td><span class="artist-link" onclick="profilGoster('${k.tSes}')">${k.tSes}</span></td>
+                <td><img src="${k.karakterResim}" class="char-thumb" onerror="this.src='https://via.placeholder.com/50'"></td>
+                <td><b>${k.karakter}</b></td>
+                <td>${k.orijinalSes}</td>
+                <td><span style="color:var(--primary); cursor:pointer; font-weight:bold" onclick="sanatciProfilGetir('${k.sanatci}')">${k.sanatci}</span></td>
             </tr>`;
     });
 
-    html += `</tbody></table></div>`;
+    html += `</table></div>`;
     alan.innerHTML = html;
 }
 
-function profilGoster(isim) {
-    const p = sanatciProfilleri[isim];
-    const roller = dublajVerileri.filter(d => d.tSes === isim);
+function sanatciProfilGetir(isim) {
+    const p = sanatciBilgileri[isim];
+    const roller = dublajVerileri.filter(d => d.sanatci === isim);
     const alan = document.getElementById('sonucAlani');
-    const bArea = document.getElementById('backBtnArea');
+    const nav = document.getElementById('navArea');
 
-    bArea.innerHTML = `<button class="back-btn" onclick="aramaYap()">← Geri Dön</button>`;
+    nav.innerHTML = `<button class="back-btn" onclick="aramaYap()">← Geri Dön</button>`;
 
     alan.innerHTML = `
-        <div class="detail-card" style="padding:20px;">
-            <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px;">
-                <img src="${p ? p.resim : ''}" style="width:120px; height:120px; border-radius:50%; object-fit:cover;" onerror="this.src='https://via.placeholder.com/120'">
-                <div>
-                    <h2>${isim}</h2>
-                    <p><strong>Doğum:</strong> ${p ? p.dogum : 'Bilinmiyor'}</p>
-                </div>
-            </div>
-            <h3>Biyografi</h3>
-            <p>${p ? p.bio : 'Biyografi henüz eklenmemiş.'}</p>
-            <h3>Seslendirdiği Karakterler</h3>
-            <ul>${roller.map(r => `<li>${r.film}: ${r.karakter}</li>`).join('')}</ul>
+        <div class="detail-box" style="padding:20px;">
+            <h2>${isim}</h2>
+            <p><b>Doğum:</b> ${p ? p.dogum : 'Bilinmiyor'}</p>
+            <p><b>Biyografi:</b> ${p ? p.bio : 'Eklenmemiş.'}</p>
+            <hr>
+            <h4>Seslendirdiği Karakterler:</h4>
+            <ul>
+                ${roller.map(r => `<li>${r.film} - ${r.karakter} (${r.studyo})</li>`).join('')}
+            </ul>
         </div>`;
 }

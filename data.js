@@ -1,4 +1,4 @@
-// 1. VERİLER (Burası senin kütüphanen)
+// 1. VERİLER (İstediğin kadar ekleme yapabilirsin)
 const dublajVerileri = [
     { 
         film: "Shrek", 
@@ -38,13 +38,21 @@ const dublajVerileri = [
     }
 ];
 
-// Sanatçı detayları (Profil için)
 const sanatciBilgileri = {
     "Okan Bayülgen": { dogum: "1964, İstanbul", bio: "Ünlü şovmen ve seslendirme sanatçısı." },
     "Engin Altan Düzyatan": { dogum: "1979, İzmir", bio: "Başarılı oyuncu ve seslendirme sanatçısı." }
 };
 
-// 2. FONKSİYONLAR (Sistemin kalbi)
+// 2. FONKSİYONLAR
+
+// ENTER TUŞU DESTEĞİ:
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('searchInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            aramaYap();
+        }
+    });
+});
 
 function aramaYap() {
     const input = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -52,19 +60,25 @@ function aramaYap() {
     const alan = document.getElementById('sonucAlani');
     const nav = document.getElementById('navArea');
 
+    // Eğer kutu boşsa alanı temizle
+    if (input.length === 0) {
+        alan.innerHTML = "";
+        nav.innerHTML = "";
+        return;
+    }
+
     alan.innerHTML = "";
     nav.innerHTML = "";
 
+    // Tahmin/Arama sadece 2 karakterden sonra başlasın (hız için)
     if (input.length < 2) return;
 
     if (type === "movie") {
-        // Filmleri filtrele
         const sonuclar = dublajVerileri.filter(d => d.film.toLowerCase().includes(input));
-        // Aynı filmi birden fazla göstermemek için grupla
         const tekilFilmler = [...new Set(sonuclar.map(s => s.film))];
 
         if (tekilFilmler.length === 0) {
-            alan.innerHTML = "<b>Sonuç bulunamadı.</b>";
+            alan.innerHTML = "<p style='text-align:center'>Sonuç bulunamadı.</p>";
             return;
         }
 
@@ -81,9 +95,13 @@ function aramaYap() {
         alan.innerHTML = html;
 
     } else {
-        // Sanatçı ara
         const sonuclar = dublajVerileri.filter(d => d.sanatci.toLowerCase().includes(input));
         const isimler = [...new Set(sonuclar.map(s => s.sanatci))];
+
+        if (isimler.length === 0) {
+            alan.innerHTML = "<p style='text-align:center'>Sanatçı bulunamadı.</p>";
+            return;
+        }
 
         alan.innerHTML = isimler.map(isim => `
             <div class="movie-card" style="width:100%; display:flex; justify-content:space-between; align-items:center; padding:15px; margin-bottom:10px;">

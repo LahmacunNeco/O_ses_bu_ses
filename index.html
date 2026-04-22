@@ -12,8 +12,9 @@
         
         header { text-align: center; margin-bottom: 30px; }
         header h1 { color: var(--primary); margin: 0; font-size: 2.5rem; }
+        /* YENİ: Alt Başlık Stili */
+        .subtitle { color: #666; font-style: italic; margin-top: 5px; font-size: 1.1rem; }
 
-        /* Arama Paneli */
         .search-area { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .search-row { display: flex; gap: 10px; margin-top: 15px; }
         input[type="text"] { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; outline: none; font-size: 1rem; }
@@ -23,7 +24,6 @@
         .radio-group { display: flex; justify-content: center; gap: 20px; }
         .radio-group label { cursor: pointer; font-weight: 600; }
 
-        /* Kartlar ve Tablo */
         .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; margin-top: 20px; }
         .movie-card { background: white; padding: 10px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .movie-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
@@ -46,15 +46,16 @@
 <div class="container">
     <header>
         <h1><i class="fas fa-microphone-alt"></i> Tanıdık Sesler</h1>
+        <p class="subtitle">hep duyduğumuz ama adını bilmediğimiz sesler</p>
     </header>
 
     <div class="search-area">
         <div class="radio-group">
-            <label><input type="radio" name="searchType" value="movie" checked> Film Ara</label>
-            <label><input type="radio" name="searchType" value="artist"> Sanatçı Ara</label>
+            <label><input type="radio" name="searchType" value="movie" checked onchange="aramaYap()"> Film Ara</label>
+            <label><input type="radio" name="searchType" value="artist" onchange="aramaYap()"> Sanatçı Ara</label>
         </div>
         <div class="search-row">
-            <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Shrek)...">
+            <input type="text" id="searchInput" placeholder="Yazmaya başlayın..." oninput="aramaYap()">
             <button class="btn" onclick="aramaYap()">ARA</button>
         </div>
     </div>

@@ -1,70 +1,72 @@
-// 1. VERİLER (İstediğin kadar ekleme yapabilirsin)
+// 1. VERİLER 
 const dublajVerileri = [
     { 
         film: "Shrek", 
         karakter: "Shrek", 
-        karakterResim: "images/filmler/Shrek_1/karakterler/Shrek.jpg", 
+        karakterResim: "images/filmler/Shrek/Shrek.jpg", 
         orijinalSes: "Mike Myers", 
         sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek_1/Shrek.jpg" 
+        afis: "images/filmler/Shrek/Shrek1.jpg" // Tarifine göre düzeltildi
     },
     { 
         film: "Shrek", 
         karakter: "Eşek", 
-        karakterResim: "images/filmler/Shrek_1/karakterler/Esek.jpg", 
+        karakterResim: "images/filmler/Shrek/Esek.jpg", 
         orijinalSes: "Eddie Murphy", 
         sanatci: "Mehmet Ali Erbil", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/shrek1_afis.jpg" 
+        afis: "images/filmler/Shrek/Shrek1.jpg" 
     },
     { 
         film: "Shrek 2", 
         karakter: "Shrek", 
-        karakterResim: "images/filmler/Shrek_1/karakterler/Shrek.jpg", 
+        karakterResim: "images/filmler/Shrek/Shrek.jpg", 
         orijinalSes: "Mike Myers", 
         sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/shrek2_afis.jpg" 
+        afis: "images/filmler/Shrek/Shrek2.jpg" 
     },
     { 
         film: "Shrek 2", 
         karakter: "Çizmeli Kedi", 
-        karakterResim: "images/shrek2_puss.jpg", 
+        karakterResim: "images/filmler/Shrek/CizmeliKedi.jpg", 
         orijinalSes: "Antonio Banderas", 
-        sanatci: "Engin Altan Düzyatan", 
+        sanatci: "Engin Alkan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/Shrek2.jpg" 
+        afis: "images/filmler/Shrek/Shrek2.jpg" 
     }
 ];
 
-// Sanatçı detayları - RESİM YOLLARI EKLENDİ
 const sanatciBilgileri = {
     "Okan Bayülgen": { 
         resim: "images/OkanBayulgen.jpg", 
         dogum: "1964, İstanbul", 
         bio: "Ünlü şovmen ve seslendirme sanatçısı." 
     },
-    "Engin Altan Düzyatan": { 
-        resim: "images/engin_altan.jpg", 
+    "Engin Alkan": { 
+        resim: "images/EnginAlkan.jpg", 
         dogum: "1979, İzmir", 
         bio: "Başarılı oyuncu ve seslendirme sanatçısı." 
     },
     "Mehmet Ali Erbil": { 
-        resim: "images/mae.jpg", 
+        resim: "images/MehmetAliErbil.jpg", 
         dogum: "1957, İstanbul", 
         bio: "Ünlü sunucu ve seslendirme sanatçısı." 
     }
 };
+
 // 2. FONKSİYONLAR
 
-// ENTER TUŞU DESTEĞİ:
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('searchInput').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            aramaYap();
-        }
-    });
+    const input = document.getElementById('searchInput');
+    if(input) {
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                aramaYap();
+            }
+        });
+    }
 });
 
 function aramaYap() {
@@ -73,7 +75,6 @@ function aramaYap() {
     const alan = document.getElementById('sonucAlani');
     const nav = document.getElementById('navArea');
 
-    // Eğer kutu boşsa alanı temizle
     if (input.length === 0) {
         alan.innerHTML = "";
         nav.innerHTML = "";
@@ -83,7 +84,6 @@ function aramaYap() {
     alan.innerHTML = "";
     nav.innerHTML = "";
 
-    // Tahmin/Arama sadece 2 karakterden sonra başlasın (hız için)
     if (input.length < 2) return;
 
     if (type === "movie") {
@@ -100,7 +100,7 @@ function aramaYap() {
             const filmVerisi = sonuclar.find(x => x.film === fName);
             html += `
                 <div class="movie-card" onclick="filmDetayGetir('${fName}')">
-                    <img src="${filmVerisi.afis}" onerror="this.src='https://via.placeholder.com/160x220?text=Film'">
+                    <img src="${filmVerisi.afis}" onerror="this.src='https://via.placeholder.com/160x220?text=Afiş+Yok'">
                     <h4>${fName}</h4>
                 </div>`;
         });
@@ -144,7 +144,7 @@ function filmDetayGetir(filmAdi) {
     kadro.forEach(k => {
         html += `
             <tr>
-                <td><img src="${k.karakterResim}" class="char-thumb" onerror="this.src='https://via.placeholder.com/50'"></td>
+                <td><img src="${k.karakterResim}" class="char-thumb" onerror="this.src='https://via.placeholder.com/50?text=?'"></td>
                 <td><b>${k.karakter}</b></td>
                 <td>${k.orijinalSes}</td>
                 <td><span style="color:var(--primary); cursor:pointer; font-weight:bold" onclick="sanatciProfilGetir('${k.sanatci}')">${k.sanatci}</span></td>
@@ -164,14 +164,20 @@ function sanatciProfilGetir(isim) {
     nav.innerHTML = `<button class="back-btn" onclick="aramaYap()">← Geri Dön</button>`;
 
     alan.innerHTML = `
-        <div class="detail-box" style="padding:20px;">
-            <h2>${isim}</h2>
-            <p><b>Doğum:</b> ${p ? p.dogum : 'Bilinmiyor'}</p>
-            <p><b>Biyografi:</b> ${p ? p.bio : 'Eklenmemiş.'}</p>
-            <hr>
-            <h4>Seslendirdiği Karakterler:</h4>
-            <ul>
-                ${roller.map(r => `<li>${r.film} - ${r.karakter} (${r.studyo})</li>`).join('')}
-            </ul>
+        <div class="detail-box" style="padding:20px; text-align:center;">
+            <img src="${p && p.resim ? p.resim : 'https://via.placeholder.com/150?text=Sanatci'}" 
+                 style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:4px solid var(--primary);"
+                 onerror="this.src='https://via.placeholder.com/150?text=Yok'">
+            
+            <h2 style="margin:0">${isim}</h2>
+            <div style="text-align:left; margin-top:20px;">
+                <p><b>Doğum:</b> ${p ? p.dogum : 'Bilinmiyor'}</p>
+                <p><b>Biyografi:</b> ${p ? p.bio : 'Eklenmemiş.'}</p>
+                <hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
+                <h4>Seslendirdiği Karakterler:</h4>
+                <ul>
+                    ${roller.map(r => `<li><b>${r.film}</b>: ${r.karakter}</li>`).join('')}
+                </ul>
+            </div>
         </div>`;
 }

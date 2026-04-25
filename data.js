@@ -139,7 +139,7 @@ const dublajVerileri = [
     { 
         film: "Shrek", 
         karakter: "Thelonious", 
-        karakterResim: "images/filmler/Shrek/YaslıKadin.jpg", 
+        karakterResim: "images/filmler/Shrek/Thelonious.jpg", 
         orijinalSes: "Christopher Knights", 
         sanatci: "Murat Şenol", 
         studyo: "İmaj Stüdyoları", 

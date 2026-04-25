@@ -3,16 +3,16 @@ const dublajVerileri = [
     { 
         film: "Shrek", 
         karakter: "Shrek", 
-        karakterResim: "images/shrek1_shrek.jpg", 
+        karakterResim: "images/filmler/Shrek_1/karakterler/Shrek.jpg", 
         orijinalSes: "Mike Myers", 
         sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/shrek1_afis.jpg" 
+        afis: "images/Shrek_1/Shrek.jpg" 
     },
     { 
         film: "Shrek", 
         karakter: "Eşek", 
-        karakterResim: "images/shrek1_donkey.jpg", 
+        karakterResim: "images/filmler/Shrek_1/karakterler/Esek.jpg", 
         orijinalSes: "Eddie Murphy", 
         sanatci: "Mehmet Ali Erbil", 
         studyo: "İmaj Stüdyoları", 
@@ -21,7 +21,7 @@ const dublajVerileri = [
     { 
         film: "Shrek 2", 
         karakter: "Shrek", 
-        karakterResim: "images/shrek2_shrek.jpg", 
+        karakterResim: "images/filmler/Shrek_1/karakterler/Shrek.jpg", 
         orijinalSes: "Mike Myers", 
         sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
@@ -34,15 +34,28 @@ const dublajVerileri = [
         orijinalSes: "Antonio Banderas", 
         sanatci: "Engin Altan Düzyatan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/shrek2_afis.jpg" 
+        afis: "images/Shrek2.jpg" 
     }
 ];
 
+// Sanatçı detayları - RESİM YOLLARI EKLENDİ
 const sanatciBilgileri = {
-    "Okan Bayülgen": { dogum: "1964, İstanbul", bio: "Ünlü şovmen ve seslendirme sanatçısı." },
-    "Engin Altan Düzyatan": { dogum: "1979, İzmir", bio: "Başarılı oyuncu ve seslendirme sanatçısı." }
+    "Okan Bayülgen": { 
+        resim: "images/OkanBayulgen.jpg", 
+        dogum: "1964, İstanbul", 
+        bio: "Ünlü şovmen ve seslendirme sanatçısı." 
+    },
+    "Engin Altan Düzyatan": { 
+        resim: "images/engin_altan.jpg", 
+        dogum: "1979, İzmir", 
+        bio: "Başarılı oyuncu ve seslendirme sanatçısı." 
+    },
+    "Mehmet Ali Erbil": { 
+        resim: "images/mae.jpg", 
+        dogum: "1957, İstanbul", 
+        bio: "Ünlü sunucu ve seslendirme sanatçısı." 
+    }
 };
-
 // 2. FONKSİYONLAR
 
 // ENTER TUŞU DESTEĞİ:

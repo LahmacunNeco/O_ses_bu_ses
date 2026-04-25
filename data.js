@@ -173,7 +173,188 @@ const dublajVerileri = [
         sanatci: "Engin Alkan", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/Shrek/Shrek2.jpg" 
-    }
+    },
+    //TERS YÜZ
+    { 
+        film: "Ters Yüz", 
+        karakter: "Neşe", 
+        karakterResim: "images/filmler/TersYüz/Nesejpg", 
+        orijinalSes: "Amy Poehler", 
+        sanatci: "Aysun Topar", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Üzüntü", 
+        karakterResim: "images/filmler/TersYüz/Uzuntu.jpg", 
+        orijinalSes: "Phyllis Smith", 
+        sanatci: "Gupse Özay", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Öfke", 
+        karakterResim: "images/filmler/TersYüz/Ofke.jpg", 
+        orijinalSes: "Lewis Black", 
+        sanatci: "Ercan Demirel", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Korku", 
+        karakterResim: "images/filmler/TersYüz/Korku.jpg", 
+        orijinalSes: "Bill Harder", 
+        sanatci: "Murat Şen", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Tiksinti", 
+        karakterResim: "images/filmler/TersYüz/Tiksinti.jpg", 
+        orijinalSes: "Mindy Kaling", 
+        sanatci: "Suzan Acun", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Bing Bong", 
+        karakterResim: "images/filmler/TersYüz/BingBong.jpg", 
+        orijinalSes: "Richard Kind", 
+        sanatci: "Engin Alkan", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Riley", 
+        karakterResim: "images/filmler/TersYüz/Riley.jpg", 
+        orijinalSes: "Kaitlyn Dias", 
+        sanatci: "Mısra Balkan", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Anne", 
+        karakterResim: "images/filmler/TersYüz/Anne.jpg", 
+        orijinalSes: "Diane Lane", 
+        sanatci: "Zeynep Özden Ayyıldız", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Baba", 
+        karakterResim: "images/filmler/TersYüz/Baba.jpg", 
+        orijinalSes: "Kyle MacLachlan", 
+        sanatci: "Ali Ekber Diribaş", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Zihin İşçisi Paula", 
+        karakterResim: "images/filmler/TersYüz/Paula.jpg", 
+        orijinalSes: "Paula Poundstone", 
+        sanatci: "Seval Tufan", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Zihin İşçisi Bobby", 
+        karakterResim: "images/filmler/TersYüz/Bobby.jpg", 
+        orijinalSes: "Bobby Moynihan", 
+        sanatci: "Ali Çorapçı", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Paula Persimmon (Rüya Yöneticisi)", 
+        karakterResim: "images/filmler/TersYüz/PaulaP.jpg", 
+        orijinalSes: "Paula Pell", 
+        sanatci: "Füsun Kokucu", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Annenin Öfkesi", 
+        karakterResim: "images/filmler/TersYüz/AnneninOfkesi.jpg", 
+        orijinalSes: "Paula Pell", 
+        sanatci: "Burcu Temel", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Bilinçaltı Gardiyanı Frank", 
+        karakterResim: "images/filmler/TersYüz/GFrank.jpg", 
+        orijinalSes: "Dave Goelz", 
+        sanatci: "Uğur Taşdemir", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Bilinçaltı Gardiyanı Dave", 
+        karakterResim: "images/filmler/TersYüz/GDave.jpg", 
+        orijinalSes: "Frank Oz", 
+        sanatci: "Sinan Divrik", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Jangles", 
+        karakterResim: "images/filmler/TersYüz/Jangles.jpg", 
+        orijinalSes: "Josh Cooley", 
+        sanatci: "Murat Şenol", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Zihin Polisi Jake", 
+        karakterResim: "images/filmler/TersYüz/GDave.jpg", 
+        orijinalSes: "Flea", 
+        sanatci: "Ali Çorapçı", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Fritz", 
+        karakterResim: "images/filmler/TersYüz/Fritz.jpg", 
+        orijinalSes: "John Ratzenberger", 
+        sanatci: "Oğuz Özoğul", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Helikopter Pilotu", 
+        karakterResim: "images/filmler/TersYüz/Pilot.jpg", 
+        orijinalSes: "Carlos Alazraqui", 
+        sanatci: "Merih Ermakstar", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
+    { 
+        film: "Ters Yüz", 
+        karakter: "Palyaçonun Neşesi", 
+        karakterResim: "images/filmler/TersYüz/PalyaçoN.jpg", 
+        orijinalSes: "Carlos Alazraqui", 
+        sanatci: "Barış Özgenç", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    },
 ];
 
 const sanatciBilgileri = {

@@ -1,5 +1,6 @@
 // 1. VERİLER 
 const dublajVerileri = [
+    //SHREK 1
     { 
         film: "Shrek", 
         karakter: "Shrek", 
@@ -7,7 +8,16 @@ const dublajVerileri = [
         orijinalSes: "Mike Myers", 
         sanatci: "Okan Bayülgen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/Shrek/Shrek1.jpg" // Tarifine göre düzeltildi
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Fiona", 
+        karakterResim: "images/filmler/Shrek/Fiona.jpg", 
+        orijinalSes: "Cameron Diaz", 
+        sanatci: "Oya Prosçiler", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
     },
     { 
         film: "Shrek", 
@@ -18,6 +28,134 @@ const dublajVerileri = [
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/Shrek/Shrek1.jpg" 
     },
+    { 
+        film: "Shrek", 
+        karakter: "Lord Farquaad", 
+        karakterResim: "images/filmler/Shrek/LordFarquaad.jpg", 
+        orijinalSes: "John Lithgow", 
+        sanatci: "Hakan Vanlı", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Pinokyo", 
+        karakterResim: "images/filmler/Shrek/Pinokyo.jpg", 
+        orijinalSes: "Cody Cameron", 
+        sanatci: "Özgür Özdural", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Robin Hood", 
+        karakterResim: "images/filmler/Shrek/RobinHood.jpg", 
+        orijinalSes: "Vincent Cassel", 
+        sanatci: "Volkan Severcan", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Sihirli Ayna", 
+        karakterResim: "images/filmler/Shrek/SihirliAyna.png", 
+        orijinalSes: "Chris Miller", 
+        sanatci: "Ayhan Kahya", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Kurabiye Adam", 
+        karakterResim: "images/filmler/Shrek/KurabiyeAdam.jpg", 
+        orijinalSes: "Conrad Vernon", 
+        sanatci: "Ziya Kürküt", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Geppetto", 
+        karakterResim: "images/filmler/Shrek/Geppetto.jpg", 
+        orijinalSes: "Chris Miller", 
+        sanatci: "Murat Şenol", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Muhafızların Lideri", 
+        karakterResim: "images/filmler/Shrek/MuhafizlarınLideri.jpg", 
+        orijinalSes: "Jim Cummings", 
+        sanatci: "Ali Ekber Diribaş", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Domuz", 
+        karakterResim: "images/filmler/Shrek/Domuz.jpg", 
+        orijinalSes: "Cody Cameron", 
+        sanatci: "Emin Yaraç", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Kör Fare #1", 
+        karakterResim: "images/filmler/Shrek/KorFareE.jpg", 
+        orijinalSes: "Christopher Knights", 
+        sanatci: "Emin Yaraç", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Kör Fare #2", 
+        karakterResim: "images/filmler/Shrek/KorFareK.jpg", 
+        orijinalSes: "Simon J. Smith", 
+        sanatci: "Kerem Atabeyoğlu", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Kurt", 
+        karakterResim: "images/filmler/Shrek/Kurt.jpg", 
+        orijinalSes: "Aron Warner", 
+        sanatci: "İsmail Yıldız", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Yaşlı Kadın", 
+        karakterResim: "images/filmler/Shrek/YaslıKadin.jpg", 
+        orijinalSes: "Kathleen Freeman", 
+        sanatci: "Bedia Ener", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Thelonious", 
+        karakterResim: "images/filmler/Shrek/YaslıKadin.jpg", 
+        orijinalSes: "Christopher Knights", 
+        sanatci: "Murat Şenol", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    { 
+        film: "Shrek", 
+        karakter: "Rahip", 
+        karakterResim: "images/filmler/Shrek/Rahip.jpg", 
+        orijinalSes: "Val Bettin", 
+        sanatci: "Zafer Önen", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/Shrek/Shrek1.jpg"
+    },
+    
+    //SHREK 2
     { 
         film: "Shrek 2", 
         karakter: "Shrek", 

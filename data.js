@@ -372,6 +372,36 @@ const sanatciBilgileri = {
         dogum: "1964, İstanbul", 
         bio: "Ünlü şovmen ve seslendirme sanatçısı." 
     },
+    "Oya Prosçiler": { 
+        resim: "images/OyaProsciler.jpeg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Hakan Vanlı": { 
+        resim: "images/HakanVanlı.jpeg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Özgür Özdural": { 
+        resim: "images/OzgurOzdural.jpeg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Volkan Severcan": { 
+        resim: "images/VolkanSevercan.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Ayhan Kahya": { 
+        resim: "images/AyhanKahya.jpeg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Ziya Kürküt": { 
+        resim: "images/ZiyaKurkut.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
     "Engin Alkan": { 
         resim: "images/EnginAlkan.jpeg", 
         dogum: "1979, İzmir", 

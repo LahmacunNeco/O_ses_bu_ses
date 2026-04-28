@@ -294,6 +294,15 @@ const dublajVerileri = [
     },
     { 
         film: "Ters Yüz", 
+        karakter: "Babanın Öfkesi", 
+        karakterResim: "images/filmler/TersYüz/BabanınO.jpg", 
+        orijinalSes: "Pete Docter", 
+        sanatci: "Fatih Özacun", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/TersYüz/TersYuz1.jpg" 
+    }, 
+    { 
+        film: "Ters Yüz", 
         karakter: "Bilinçaltı Gardiyanı Frank", 
         karakterResim: "images/filmler/TersYüz/GFrank.jpg", 
         orijinalSes: "Dave Goelz", 
@@ -354,7 +363,7 @@ const dublajVerileri = [
         sanatci: "Barış Özgenç", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/TersYüz/TersYuz1.jpg" 
-    },
+    }
 ];
 
 const sanatciBilgileri = {

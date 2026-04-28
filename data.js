@@ -373,12 +373,12 @@ const sanatciBilgileri = {
         bio: "Ünlü şovmen ve seslendirme sanatçısı." 
     },
     "Engin Alkan": { 
-        resim: "images/EnginAlkan.jpg", 
+        resim: "images/EnginAlkan.jpeg", 
         dogum: "1979, İzmir", 
         bio: "Başarılı oyuncu ve seslendirme sanatçısı." 
     },
     "Mehmet Ali Erbil": { 
-        resim: "images/MehmetAliErbil.jpg", 
+        resim: "images/MehmetAliErbil.jpeg", 
         dogum: "1957, İstanbul", 
         bio: "Ünlü sunucu ve seslendirme sanatçısı." 
     }

@@ -182,7 +182,7 @@ const dublajVerileri = [
         orijinalSes: "Amy Poehler", 
         sanatci: "Aysun Topar", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -191,7 +191,7 @@ const dublajVerileri = [
         orijinalSes: "Phyllis Smith", 
         sanatci: "Gupse Özay", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -200,7 +200,7 @@ const dublajVerileri = [
         orijinalSes: "Lewis Black", 
         sanatci: "Ercan Demirel", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -209,7 +209,7 @@ const dublajVerileri = [
         orijinalSes: "Bill Harder", 
         sanatci: "Murat Şen", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -218,7 +218,7 @@ const dublajVerileri = [
         orijinalSes: "Mindy Kaling", 
         sanatci: "Suzan Acun", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -227,7 +227,7 @@ const dublajVerileri = [
         orijinalSes: "Richard Kind", 
         sanatci: "Engin Alkan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -236,7 +236,7 @@ const dublajVerileri = [
         orijinalSes: "Kaitlyn Dias", 
         sanatci: "Mısra Balkan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -245,7 +245,7 @@ const dublajVerileri = [
         orijinalSes: "Diane Lane", 
         sanatci: "Zeynep Özden Ayyıldız", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -254,7 +254,7 @@ const dublajVerileri = [
         orijinalSes: "Kyle MacLachlan", 
         sanatci: "Ali Ekber Diribaş", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -263,7 +263,7 @@ const dublajVerileri = [
         orijinalSes: "Paula Poundstone", 
         sanatci: "Seval Tufan", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -272,7 +272,7 @@ const dublajVerileri = [
         orijinalSes: "Bobby Moynihan", 
         sanatci: "Ali Çorapçı", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -281,7 +281,7 @@ const dublajVerileri = [
         orijinalSes: "Paula Pell", 
         sanatci: "Füsun Kokucu", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -290,7 +290,7 @@ const dublajVerileri = [
         orijinalSes: "Paula Pell", 
         sanatci: "Burcu Temel", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -299,7 +299,7 @@ const dublajVerileri = [
         orijinalSes: "Pete Docter", 
         sanatci: "Fatih Özacun", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     }, 
     { 
         film: "Ters Yüz", 
@@ -308,7 +308,7 @@ const dublajVerileri = [
         orijinalSes: "Dave Goelz", 
         sanatci: "Uğur Taşdemir", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -317,7 +317,7 @@ const dublajVerileri = [
         orijinalSes: "Frank Oz", 
         sanatci: "Sinan Divrik", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -326,7 +326,7 @@ const dublajVerileri = [
         orijinalSes: "Josh Cooley", 
         sanatci: "Murat Şenol", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -335,7 +335,7 @@ const dublajVerileri = [
         orijinalSes: "Flea", 
         sanatci: "Ali Çorapçı", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -344,7 +344,7 @@ const dublajVerileri = [
         orijinalSes: "John Ratzenberger", 
         sanatci: "Oğuz Özoğul", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -353,7 +353,7 @@ const dublajVerileri = [
         orijinalSes: "Carlos Alazraqui", 
         sanatci: "Merih Ermakstar", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
     { 
         film: "Ters Yüz", 
@@ -362,7 +362,7 @@ const dublajVerileri = [
         orijinalSes: "Carlos Alazraqui", 
         sanatci: "Barış Özgenç", 
         studyo: "İmaj Stüdyoları", 
-        afis: "images/filmler/TersYüz/TersYuz.png" 
+        afis: "images/filmler/TersYüz/TersYuz1.png" 
     }
 ];
 

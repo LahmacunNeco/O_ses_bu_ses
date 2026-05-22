@@ -305,7 +305,7 @@ const dublajVerileri = [
         film: "Ters Yüz", 
         karakter: "Bilinçaltı Gardiyanı Frank", 
         karakterResim: "images/filmler/TersYüz/GFrank.jpg", 
-        orijinalSes: "Dave Goelz", 
+        orijinalSes: "Frank Oz", 
         sanatci: "Uğur Taşdemir", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/TersYüz/TersYuz1.jpg" 
@@ -314,7 +314,7 @@ const dublajVerileri = [
         film: "Ters Yüz", 
         karakter: "Bilinçaltı Gardiyanı Dave", 
         karakterResim: "images/filmler/TersYüz/GDave.jpg", 
-        orijinalSes: "Frank Oz", 
+        orijinalSes: "Dave Goelz", 
         sanatci: "Sinan Divrik", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/TersYüz/TersYuz1.jpg" 

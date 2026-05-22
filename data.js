@@ -276,7 +276,7 @@ const dublajVerileri = [
     },
     { 
         film: "Ters Yüz", 
-        karakter: "Paula Persimmon (Rüya Yöneticisi)", 
+        karakter: "Paula Persimmon (Rüya Yönetmeni)", 
         karakterResim: "images/filmler/TersYüz/PaulaP.jpg", 
         orijinalSes: "Paula Pell", 
         sanatci: "Füsun Kokucu", 
@@ -286,7 +286,7 @@ const dublajVerileri = [
     { 
         film: "Ters Yüz", 
         karakter: "Annenin Öfkesi", 
-        karakterResim: "images/filmler/TersYüz/AnneninOfkesi.jpg", 
+        karakterResim: "images/filmler/TersYüz/AnneninO.jpg", 
         orijinalSes: "Paula Pell", 
         sanatci: "Burcu Temel", 
         studyo: "İmaj Stüdyoları", 

@@ -407,6 +407,31 @@ const sanatciBilgileri = {
         dogum: "1979, İzmir", 
         bio: "Başarılı oyuncu ve seslendirme sanatçısı." 
     },
+    "Murat Şenol": { 
+        resim: "images/MuratSenol.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Ali Ekber Diribaş": { 
+        resim: "images/AliEkberDiribas.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Emin Yaraç": { 
+        resim: "images/EminYarac.jpg", //görsel sığmayabilir
+        dogum: "", 
+        bio: "" 
+    },
+    "Kerem Atabeyoğlu": { 
+        resim: "images/MuratSenol.jpg", //2 tane resim var
+        dogum: "", 
+        bio: "" 
+    },
+    "Murat Şenol": { 
+        resim: "images/MuratSenol.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
     "Mehmet Ali Erbil": { 
         resim: "images/MehmetAliErbil.jpeg", 
         dogum: "1957, İstanbul", 

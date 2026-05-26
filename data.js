@@ -288,7 +288,7 @@ const dublajVerileri = [
         karakter: "Annenin Öfkesi", 
         karakterResim: "images/filmler/TersYüz/AnneninO.png", 
         orijinalSes: "Paula Pell", 
-        sanatci: "Burcu Temel", 
+        sanatci: "Zeyno Burcu Temel", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/TersYüz/TersYuz1.png" 
     },
@@ -444,6 +444,86 @@ const sanatciBilgileri = {
     },
     "Aysun Topar": { 
         resim: "images/AysunTopar.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Gupse Özay": { 
+        resim: "images/GupseÖzay.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Ercan Demirel": { 
+        resim: "images/ErcanDemirel.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Suzan Acun": { 
+        resim: "images/SuzanAcun.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Murat Şen": { 
+        resim: "images/MuratSen.jpeg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Mısra Balkan": { 
+        resim: "Resim Bulunamadı", //bakalım olacak mı?
+        dogum: "", 
+        bio: "" 
+    },
+    "Zeynep Özden Ayyıldız": { 
+        resim: "images/ZeynepÖzdenAyyıldız.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Seval Tufan": { 
+        resim: "images/SevalTufan.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Ali Çorapçı": { 
+        resim: "images/AliÇorapçı.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Füsun Kokucu": { 
+        resim: "images/FüsunKokucu.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Zeyno Burcu Temel": { 
+        resim: "images/ZeynoBurcuTemel.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Fatih Özacun": { 
+        resim: "images/FatihÖzacun.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Uğur Taşdemir": { 
+        resim: "images/UğurTaşdemir.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Sinan Divrik": { 
+        resim: "images/SinanDivrik.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Oğuz Özoğul": { 
+        resim: "images/OğuzÖzoğul.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Merih Ermakstar": { 
+        resim: "images/MerihErmakstar.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+    "Barış Özgenç": { 
+        resim: "images/BarışÖzgenç.jpg",
         dogum: "", 
         bio: "" 
     },

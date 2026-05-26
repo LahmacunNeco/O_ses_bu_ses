@@ -423,12 +423,27 @@ const sanatciBilgileri = {
         bio: "" 
     },
     "Kerem Atabeyoğlu": { 
-        resim: "images/MuratSenol.jpg", //2 tane resim var
+        resim: "images/KeremAtabeyoglu.jpg",
         dogum: "", 
         bio: "" 
     },
-    "Murat Şenol": { 
-        resim: "images/MuratSenol.jpg", 
+    "İsmail Yıldız": { 
+        resim: "images/İsmailYıldız.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Bedia Ener": { 
+        resim: "images/BediaEner.jpg", 
+        dogum: "", 
+        bio: "" 
+    },
+    "Zafer Önen": { 
+        resim: "images/ZaferÖnen.jpg", //Ö harfi çalışmayabilir
+        dogum: "", 
+        bio: "" 
+    },
+    "Aysun Topar": { 
+        resim: "images/AysunTopar.jpg",
         dogum: "", 
         bio: "" 
     },

@@ -363,6 +363,151 @@ const dublajVerileri = [
         sanatci: "Barış Özgenç", 
         studyo: "İmaj Stüdyoları", 
         afis: "images/filmler/TersYüz/TersYuz1.png" 
+    },
+    //DREAM PRODUCTIONS
+    { 
+        film: "Dream Productions", 
+        karakter: "Paula Persimmon", 
+        karakterResim: "images/filmler/DreamProductions/PaulaPersimmon.jpg", 
+        orijinalSes: "Paula Pell", 
+        sanatci: "Özlem Abacı", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Xeni", 
+        karakterResim: "images/filmler/DreamProductions/Xeni.jpg", 
+        orijinalSes: "Richard Ayoade", 
+        sanatci: "Erden Tunatekin", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Janelle Johnson", 
+        karakterResim: "images/filmler/DreamProductions/JanelleJohnson.jpg", 
+        orijinalSes: "Ally Maki", 
+        sanatci: "Başak Arslan", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Jean Dewberry", 
+        karakterResim: "images/filmler/DreamProductions/JeanDewberry.jpg", 
+        orijinalSes: "Maya Rudolph", 
+        sanatci: "Ayça Koptur", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Sheng", 
+        karakterResim: "images/filmler/DreamProductions/Sheng.jpg", 
+        orijinalSes: "Matt Yang King", 
+        sanatci: "Atakan Arısoy", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Gigi", 
+        karakterResim: "images/filmler/DreamProductions/Gigi.jpg", 
+        orijinalSes: "Kimberly Woods", 
+        sanatci: "Goncasen Çoban", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Marco", 
+        karakterResim: "images/filmler/DreamProductions/Marco.jpg", 
+        orijinalSes: "Carlos Alazraqui", 
+        sanatci: "Mutlu Albayram", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Pilar", 
+        karakterResim: "images/filmler/DreamProductions/Pilar.jpg", 
+        orijinalSes: "Grey Delisle", 
+        sanatci: "Canan Çiftel", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Naseem", 
+        karakterResim: "images/filmler/DreamProductions/Naseem.jpg", 
+        orijinalSes: "Giancarlo Sabogal", 
+        sanatci: "Ali Hekimoğlu", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Ziggy", 
+        karakterResim: "images/filmler/DreamProductions/Ziggy.jpg", 
+        orijinalSes: "Ace Gibson", 
+        sanatci: "Murat Değirmenci", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Noriko", 
+        karakterResim: "images/filmler/DreamProductions/Noriko.jpg", 
+        orijinalSes: "Maya Aoki Tuttle", 
+        sanatci: "Ekin Ayça Gümüş", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Fink", 
+        karakterResim: "images/filmler/DreamProductions/Fink.jpg", 
+        orijinalSes: "Peter Jessop", 
+        sanatci: "Oğuz Özoğul", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Genç Riley", //Bunu düzenle ergen mi genç mi?
+        karakterResim: "images/filmler/DreamProductions/GençRiley.jpg", 
+        orijinalSes: "Lauren Holt", 
+        sanatci: "Çağıl Özdemir", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Minik Riley", 
+        karakterResim: "images/filmler/DreamProductions/MinikRiley.jpg", 
+        orijinalSes: "Quinn Minichino Eakins", 
+        sanatci: "Defne Bozçalı", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Kanadalı Erkek Arkadaş", 
+        karakterResim: "images/filmler/DreamProductions/KanadalıErkekArkadaş.jpg", 
+        orijinalSes: "Noah Bentley", 
+        sanatci: "Ali Hekimoğlu", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
+    },
+    { 
+        film: "Dream Productions", 
+        karakter: "Büfe Müdürü Jacob", 
+        karakterResim: "images/filmler/DreamProductions/BüfeMüdürüJacob.jpg", 
+        orijinalSes: "Kunal Dudheker", 
+        sanatci: "Ali Arda Tümer", 
+        studyo: "İmaj Stüdyoları", 
+        afis: "images/filmler/DreamProductions/DreamProductions.jpg" 
     }
 ];
 

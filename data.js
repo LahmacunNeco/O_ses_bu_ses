@@ -672,7 +672,77 @@ const sanatciBilgileri = {
         dogum: "", 
         bio: "" 
     },
-    "Mehmet Ali Erbil": { 
+     "Özlem Abacı": { 
+        resim: "images/ÖzlemAbacı.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "ErdenTunatekin": { 
+        resim: "images/ErdenTunatekin.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Başak Arslan": { 
+        resim: "images/BaşakArslan.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Ayça Koptur": { 
+        resim: "images/AyçaKoptur.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Ali Arda Tümer": { 
+        resim: "images/AliArdaTümer.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Ali Hekimoğlu": { 
+        resim: "images/AliHekimoğlu.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Atakan Arısoy": { 
+        resim: "images/AtakanArısoy.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Goncasen Çoban": { 
+        resim: "images/GoncasenÇoban.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Mutlu Albayram": { 
+        resim: "images/MutluAlbayram.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Canan Çiftel": { 
+        resim: "images/CananÇiftel.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Murat Değirmenci": { 
+        resim: "images/MuratDeğirmenci.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Ekin Ayça Gümüş": { 
+        resim: "images/EkinAyçaGümüş.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Çağıl Özdemir": { 
+        resim: "images/ÇağılÖzdemir.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Defne Bozçalı": { 
+        resim: "images/DefneBozçalı.jpg",
+        dogum: "", 
+        bio: "" 
+    },
+     "Mehmet Ali Erbil": { 
         resim: "images/MehmetAliErbil.jpeg", 
         dogum: "1957, İstanbul", 
         bio: "Ünlü sunucu ve seslendirme sanatçısı." 

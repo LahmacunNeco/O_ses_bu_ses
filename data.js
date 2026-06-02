@@ -718,7 +718,7 @@ const sanatciBilgileri = {
         bio: "" 
     },
      "Canan Çiftel": { 
-        resim: "images/CananÇiftel.jpg",
+        resim: "images/05.jpg",
         dogum: "", 
         bio: "" 
     },

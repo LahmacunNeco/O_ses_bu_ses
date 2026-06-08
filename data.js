@@ -673,7 +673,7 @@ const sanatciBilgileri = {
         bio: "" 
     },
     "Özlem Abacı": { 
-        resim: "images/OzlemAbaci.jpg",
+        resim: "images/ÖzlemAbacı.jpg",
         dogum: "", 
         bio: "" 
     },

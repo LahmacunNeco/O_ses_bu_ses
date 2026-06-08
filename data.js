@@ -672,73 +672,73 @@ const sanatciBilgileri = {
         dogum: "", 
         bio: "" 
     },
-     "Özlem Abacı": { 
-        resim: "images/ÖzlemAbacı.jpg",
+    "Özlem Abacı": { 
+        resim: "images/OzlemAbaci.jpg",
         dogum: "", 
         bio: "" 
     },
-     "ErdenTunatekin": { 
+    "ErdenTunatekin": { 
         resim: "images/ErdenTunatekin.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Başak Arslan": { 
-        resim: "images/BaşakArslan.jpg",
+    "Başak Arslan": { 
+        resim: "images/BasakArslan.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Ayça Koptur": { 
-        resim: "images/AyçaKoptur.jpg",
+    "Ayça Koptur": { 
+        resim: "images/AycaKoptur.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Ali Arda Tümer": { 
-        resim: "images/AliArdaTümer.jpg",
+    "Ali Arda Tümer": { 
+        resim: "images/AliArdaTumer.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Ali Hekimoğlu": { 
-        resim: "images/AliHekimoğlu.jpg",
+    "Ali Hekimoğlu": { 
+        resim: "images/AliHekimoglu.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Atakan Arısoy": { 
-        resim: "images/AtakanArısoy.jpg",
+    "Atakan Arısoy": { 
+        resim: "images/AtakanArisoy.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Goncasen Çoban": { 
-        resim: "images/GoncasenÇoban.jpg",
+    "Goncasen Çoban": { 
+        resim: "images/GoncasenCoban.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Mutlu Albayram": { 
+    "Mutlu Albayram": { 
         resim: "images/MutluAlbayram.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Canan Çiftel": { 
+    "Canan Çiftel": { 
         resim: "images/05.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Murat Değirmenci": { 
-        resim: "images/MuratDeğirmenci.jpg",
+    "Murat Değirmenci": { 
+        resim: "images/MuratDegirmenci.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Ekin Ayça Gümüş": { 
-        resim: "images/EkinAyçaGümüş.jpg",
+    "Ekin Ayça Gümüş": { 
+        resim: "images/EkinAycaGumus.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Çağıl Özdemir": { 
-        resim: "images/ÇağılÖzdemir.jpg",
+    "Çağıl Özdemir": { 
+        resim: "images/CagilOzdemir.jpg",
         dogum: "", 
         bio: "" 
     },
-     "Defne Bozçalı": { 
-        resim: "images/DefneBozçalı.jpg",
+    "Defne Bozçalı": { 
+        resim: "images/DefneBozcali.jpg",
         dogum: "", 
         bio: "" 
     },
